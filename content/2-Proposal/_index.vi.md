@@ -1,108 +1,75 @@
 ---
 title: "Bản đề xuất"
-date: 2024-01-01
+date: 2026-07-15
 weight: 2
 chapter: false
 pre: " <b> 2. </b> "
 ---
-{{% notice warning %}}
-⚠️ **Lưu ý:** Các thông tin dưới đây chỉ nhằm mục đích tham khảo, vui lòng **không sao chép nguyên văn** cho bài báo cáo của bạn kể cả warning này.
-{{% /notice %}}
 
-Tại phần này, bạn cần tóm tắt các nội dung trong workshop mà bạn **dự tính** sẽ làm.
-
-# IoT Weather Platform for Lab Research  
-## Giải pháp AWS Serverless hợp nhất cho giám sát thời tiết thời gian thực  
+# Cloud Finance Platform  
+## Giải pháp Quản lý Tài chính Đa nền tảng và Đồng bộ Thời gian thực  
 
 ### 1. Tóm tắt điều hành  
-IoT Weather Platform được thiết kế dành cho nhóm *ITea Lab* tại TP. Hồ Chí Minh nhằm nâng cao khả năng thu thập và phân tích dữ liệu thời tiết. Nền tảng hỗ trợ tối đa 5 trạm thời tiết, có khả năng mở rộng lên 10–15 trạm, sử dụng thiết bị biên Raspberry Pi kết hợp cảm biến ESP32 để truyền dữ liệu qua MQTT. Nền tảng tận dụng các dịch vụ AWS Serverless để cung cấp giám sát thời gian thực, phân tích dự đoán và tiết kiệm chi phí, với quyền truy cập giới hạn cho 5 thành viên phòng lab thông qua Amazon Cognito.  
+Cloud Finance Platform là hệ thống quản lý tài chính được thiết kế nhằm giải quyết bài toán phân tán dòng tiền qua nhiều kênh thanh toán. Nền tảng cung cấp một giải pháp toàn diện bao gồm ứng dụng di động và bảng điều khiển web, cho phép theo dõi thu chi, đồng bộ ví và quản lý giao dịch theo thời gian thực. Hệ thống sử dụng kiến trúc Backend-as-a-Service (BaaS) với Supabase, kết hợp cùng Flutter (Dart) cho thiết bị di động và ReactJS (TypeScript) cho nền tảng web, đảm bảo hiệu năng cao, bảo mật dữ liệu và khả năng mở rộng linh hoạt.  
 
 ### 2. Tuyên bố vấn đề  
 *Vấn đề hiện tại*  
-Các trạm thời tiết hiện tại yêu cầu thu thập dữ liệu thủ công, khó quản lý khi có nhiều trạm. Không có hệ thống tập trung cho dữ liệu hoặc phân tích thời gian thực, và các nền tảng bên thứ ba thường tốn kém và quá phức tạp.  
+Việc giao dịch qua đa dạng các kênh thanh toán, ví điện tử hay ngân hàng (như Techcombank, MoMo, Cake, ShopeePay) khiến dòng tiền bị phân tán. Quá trình theo dõi lịch sử giao dịch, tổng hợp chi tiêu và kiểm soát ngân sách hiện tại phần lớn được thực hiện thủ công, gây mất thời gian và dễ xảy ra sai sót. Các giải pháp có sẵn trên thị trường thường thiếu tính tùy biến cho các luồng dữ liệu cá nhân hóa hoặc vận hành cồng kềnh.  
 
 *Giải pháp*  
-Nền tảng sử dụng AWS IoT Core để tiếp nhận dữ liệu MQTT, AWS Lambda và API Gateway để xử lý, Amazon S3 để lưu trữ (bao gồm data lake), và AWS Glue Crawlers cùng các tác vụ ETL để trích xuất, chuyển đổi, tải dữ liệu từ S3 data lake sang một S3 bucket khác để phân tích. AWS Amplify với Next.js cung cấp giao diện web, và Amazon Cognito đảm bảo quyền truy cập an toàn. Tương tự như Thingsboard và CoreIoT, người dùng có thể đăng ký thiết bị mới và quản lý kết nối, nhưng nền tảng này hoạt động ở quy mô nhỏ hơn và phục vụ mục đích sử dụng nội bộ. Các tính năng chính bao gồm bảng điều khiển thời gian thực, phân tích xu hướng và chi phí vận hành thấp.  
+Dự án tập trung xây dựng một nền tảng tài chính đám mây hợp nhất. Hệ thống sử dụng hệ sinh thái Supabase (PostgreSQL, Auth, Storage) làm trung tâm xử lý dữ liệu. Người dùng sẽ tương tác qua hai điểm chạm: Mobile App (Flutter) chuyên dụng cho việc đồng bộ ví, cập nhật và theo dõi giao dịch hàng ngày; Web Dashboard (ReactJS + TypeScript) được tối ưu cho việc quan sát biểu đồ, thống kê và phân tích báo cáo chuyên sâu.  
 
 *Lợi ích và hoàn vốn đầu tư (ROI)*  
-Giải pháp tạo nền tảng cơ bản để các thành viên phòng lab phát triển một nền tảng IoT lớn hơn, đồng thời cung cấp nguồn dữ liệu cho những người nghiên cứu AI phục vụ huấn luyện mô hình hoặc phân tích. Nền tảng giảm bớt báo cáo thủ công cho từng trạm thông qua hệ thống tập trung, đơn giản hóa quản lý và bảo trì, đồng thời cải thiện độ tin cậy dữ liệu. Chi phí hàng tháng ước tính 0,66 USD (theo AWS Pricing Calculator), tổng cộng 7,92 USD cho 12 tháng. Tất cả thiết bị IoT đã được trang bị từ hệ thống trạm thời tiết hiện tại, không phát sinh chi phí phát triển thêm. Thời gian hoàn vốn 6–12 tháng nhờ tiết kiệm đáng kể thời gian thao tác thủ công.  
+Giải pháp số hóa và tự động hóa quy trình đối soát giữa các nguồn tiền, mang lại bức tranh tài chính minh bạch. Việc tận dụng kiến trúc Cloud/BaaS mã nguồn mở giúp giảm thiểu chi phí máy chủ (OpEx) ở mức thấp nhất. Đồng thời, nền tảng tạo ra một cơ sở dữ liệu có cấu trúc chuẩn mực, sẵn sàng phục vụ cho các nghiên cứu, tích hợp thuật toán phân tích hành vi hoặc dự báo dòng tiền trong tương lai.  
 
 ### 3. Kiến trúc giải pháp  
-Nền tảng áp dụng kiến trúc AWS Serverless để quản lý dữ liệu từ 5 trạm dựa trên Raspberry Pi, có thể mở rộng lên 15 trạm. Dữ liệu được tiếp nhận qua AWS IoT Core, lưu trữ trong S3 data lake và xử lý bởi AWS Glue Crawlers và ETL jobs để chuyển đổi và tải vào một S3 bucket khác cho mục đích phân tích. Lambda và API Gateway xử lý bổ sung, trong khi Amplify với Next.js cung cấp bảng điều khiển được bảo mật bởi Cognito.  
+Nền tảng áp dụng kiến trúc Client-Server phân tách rõ ràng giữa giao diện người dùng và logic xử lý dữ liệu, tận dụng tối đa Cloud Services để đảm bảo tính đồng bộ.  
 
-![IoT Weather Station Architecture](/images/2-Proposal/edge_architecture.jpeg)
-
-![IoT Weather Platform Architecture](/images/2-Proposal/platform_architecture.jpeg)
-
-*Dịch vụ AWS sử dụng*  
-- *AWS IoT Core*: Tiếp nhận dữ liệu MQTT từ 5 trạm, mở rộng lên 15.  
-- *AWS Lambda*: Xử lý dữ liệu và kích hoạt Glue jobs (2 hàm).  
-- *Amazon API Gateway*: Giao tiếp với ứng dụng web.  
-- *Amazon S3*: Lưu trữ dữ liệu thô (data lake) và dữ liệu đã xử lý (2 bucket).  
-- *AWS Glue*: Crawlers lập chỉ mục dữ liệu, ETL jobs chuyển đổi và tải dữ liệu.  
-- *AWS Amplify*: Lưu trữ giao diện web Next.js.  
-- *Amazon Cognito*: Quản lý quyền truy cập cho người dùng phòng lab.  
+*Dịch vụ & Công nghệ sử dụng*  
+- **Frontend (Mobile):** Flutter (Dart) – Xử lý UI đồng bộ ví, luồng quản lý giao dịch (wallet/transaction screens).  
+- **Frontend (Web):** ReactJS kết hợp TypeScript – Xây dựng Dashboard quản trị và phân tích, lưu trữ thông qua các dịch vụ như AWS Amplify hoặc Vercel.  
+- **Backend & Database:** Supabase – Cung cấp cơ sở dữ liệu PostgreSQL, tính năng bảo mật cấp độ dòng (RLS) và Realtime subscriptions.  
+- **Authentication:** Supabase Auth – Xử lý định danh và quản lý phiên đăng nhập an toàn.  
 
 *Thiết kế thành phần*  
-- *Thiết bị biên*: Raspberry Pi thu thập và lọc dữ liệu cảm biến, gửi tới IoT Core.  
-- *Tiếp nhận dữ liệu*: AWS IoT Core nhận tin nhắn MQTT từ thiết bị biên.  
-- *Lưu trữ dữ liệu*: Dữ liệu thô lưu trong S3 data lake; dữ liệu đã xử lý lưu ở một S3 bucket khác.  
-- *Xử lý dữ liệu*: AWS Glue Crawlers lập chỉ mục dữ liệu; ETL jobs chuyển đổi để phân tích.  
-- *Giao diện web*: AWS Amplify lưu trữ ứng dụng Next.js cho bảng điều khiển và phân tích thời gian thực.  
-- *Quản lý người dùng*: Amazon Cognito giới hạn 5 tài khoản hoạt động.  
+- *Data Model:* Lược đồ cơ sở dữ liệu tối ưu với các thực thể cốt lõi: `Users`, `Wallets` (Ngân hàng, Ví điện tử), `Transactions` và `Categories`.  
+- *Thiết bị & Giao diện:* Mobile app hỗ trợ nhập liệu nhanh chóng và theo dõi số dư ví (wallet sync); Web app cung cấp không gian rộng hơn cho các biểu đồ tài chính.  
+- *Xử lý dữ liệu:* Các hàm xử lý tính toán số dư được quản lý trực tiếp qua PostgreSQL hoặc API tích hợp.  
 
 ### 4. Triển khai kỹ thuật  
 *Các giai đoạn triển khai*  
-Dự án gồm 2 phần — thiết lập trạm thời tiết biên và xây dựng nền tảng thời tiết — mỗi phần trải qua 4 giai đoạn:  
-1. *Nghiên cứu và vẽ kiến trúc*: Nghiên cứu Raspberry Pi với cảm biến ESP32 và thiết kế kiến trúc AWS Serverless (1 tháng trước kỳ thực tập).  
-2. *Tính toán chi phí và kiểm tra tính khả thi*: Sử dụng AWS Pricing Calculator để ước tính và điều chỉnh (Tháng 1).  
-3. *Điều chỉnh kiến trúc để tối ưu chi phí/giải pháp*: Tinh chỉnh (ví dụ tối ưu Lambda với Next.js) để đảm bảo hiệu quả (Tháng 2).  
-4. *Phát triển, kiểm thử, triển khai*: Lập trình Raspberry Pi, AWS services với CDK/SDK và ứng dụng Next.js, sau đó kiểm thử và đưa vào vận hành (Tháng 2–3).  
+Dự án được chia thành 4 giai đoạn chính để đảm bảo tiến độ và tính ổn định của mã nguồn:  
+1. *Nghiên cứu & Thiết kế hệ thống:* Thiết kế kiến trúc dữ liệu (ERD), xác định luồng UI/UX và hoạch định cấu trúc Repository (`cloud-finance-platform`).  
+2. *Khởi tạo Backend:* Thiết lập dự án Supabase, cấu hình schema, áp dụng Row Level Security (RLS) để đảm bảo quyền riêng tư dữ liệu.  
+3. *Phát triển Mobile App:* Lập trình ứng dụng Flutter, tập trung vào module tích hợp Supabase, xác thực người dùng và các màn hình quản lý ví.  
+4. *Phát triển Web Dashboard & Kiểm thử:* Hoàn thiện giao diện web bằng ReactJS/TypeScript, kết nối API, kiểm thử end-to-end trên toàn bộ nền tảng và triển khai.  
 
 *Yêu cầu kỹ thuật*  
-- *Trạm thời tiết biên*: Cảm biến (nhiệt độ, độ ẩm, lượng mưa, tốc độ gió), vi điều khiển ESP32, Raspberry Pi làm thiết bị biên. Raspberry Pi chạy Raspbian, sử dụng Docker để lọc dữ liệu và gửi 1 MB/ngày/trạm qua MQTT qua Wi-Fi.  
-- *Nền tảng thời tiết*: Kiến thức thực tế về AWS Amplify (lưu trữ Next.js), Lambda (giảm thiểu do Next.js xử lý), AWS Glue (ETL), S3 (2 bucket), IoT Core (gateway và rules), và Cognito (5 người dùng). Sử dụng AWS CDK/SDK để lập trình (ví dụ IoT Core rules tới S3). Next.js giúp giảm tải Lambda cho ứng dụng web fullstack.  
+- *Mobile/Web:* Kiến thức thực tế về cấu trúc component trong ReactJS, quản lý trạng thái (State Management) trong Flutter, xử lý bất đồng bộ.  
+- *Backend/Cloud:* Làm chủ Supabase API, viết logic SQL cho các transaction tài chính đảm bảo tính toàn vẹn dữ liệu (ACID).  
 
 ### 5. Lộ trình & Mốc triển khai  
-- *Trước thực tập (Tháng 0)*: 1 tháng lên kế hoạch và đánh giá trạm cũ.  
-- *Thực tập (Tháng 1–3)*:  
-    - Tháng 1: Học AWS và nâng cấp phần cứng.  
-    - Tháng 2: Thiết kế và điều chỉnh kiến trúc.  
-    - Tháng 3: Triển khai, kiểm thử, đưa vào sử dụng.  
-- *Sau triển khai*: Nghiên cứu thêm trong vòng 1 năm.  
+- *Giai đoạn 1 (Thiết kế & Khởi tạo):* Hoàn thiện kiến trúc cơ sở dữ liệu, thiết lập môi trường Supabase và UI/UX mockups.  
+- *Giai đoạn 2 (Core Development):* Hoàn thành MVP ứng dụng Flutter với đầy đủ tính năng CRUD cho giao dịch và đồng bộ số dư.  
+- *Giai đoạn 3 (Web & Mở rộng):* Phát triển Web Dashboard bằng ReactJS, tích hợp báo cáo thống kê.  
+- *Giai đoạn 4 (Vận hành & Đánh giá):* Kiểm thử bảo mật, tối ưu hiệu năng và đưa vào sử dụng thực tế.  
 
 ### 6. Ước tính ngân sách  
-Có thể xem chi phí trên [AWS Pricing Calculator](https://calculator.aws/#/estimate?id=621f38b12a1ef026842ba2ddfe46ff936ed4ab01)  
-Hoặc tải [tệp ước tính ngân sách](../attachments/budget_estimation.pdf).  
+Nhờ kiến trúc BaaS, chi phí hạ tầng ban đầu được tối ưu triệt để.
 
-*Chi phí hạ tầng*  
-- AWS Lambda: 0,00 USD/tháng (1.000 request, 512 MB lưu trữ).  
-- S3 Standard: 0,15 USD/tháng (6 GB, 2.100 request, 1 GB quét).  
-- Truyền dữ liệu: 0,02 USD/tháng (1 GB vào, 1 GB ra).  
-- AWS Amplify: 0,35 USD/tháng (256 MB, request 500 ms).  
-- Amazon API Gateway: 0,01 USD/tháng (2.000 request).  
-- AWS Glue ETL Jobs: 0,02 USD/tháng (2 DPU).  
-- AWS Glue Crawlers: 0,07 USD/tháng (1 crawler).  
-- MQTT (IoT Core): 0,08 USD/tháng (5 thiết bị, 45.000 tin nhắn).  
+*Chi phí hạ tầng (Ước tính)*  
+- **Supabase (Database/Auth):** 0,00 USD/tháng (Sử dụng Free Tier; hỗ trợ lên đến 500MB Database và 50,000 MAU).  
+- **Web Hosting (Vercel/Amplify):** 0,00 USD/tháng (Gói cơ bản cho nền tảng web).  
+- **Tên miền (Domain):** Ước tính ~1,00 - 1,50 USD/tháng.  
 
-*Tổng*: 0,7 USD/tháng, 8,40 USD/12 tháng  
-- *Phần cứng*: 265 USD một lần (Raspberry Pi 5 và cảm biến).  
+*Tổng chi phí vận hành:* ~1,50 USD/tháng (trong giai đoạn MVP sử dụng cá nhân).  
 
 ### 7. Đánh giá rủi ro  
 *Ma trận rủi ro*  
-- Mất mạng: Ảnh hưởng trung bình, xác suất trung bình.  
-- Hỏng cảm biến: Ảnh hưởng cao, xác suất thấp.  
-- Vượt ngân sách: Ảnh hưởng trung bình, xác suất thấp.  
-
-*Chiến lược giảm thiểu*  
-- Mạng: Lưu trữ cục bộ trên Raspberry Pi với Docker.  
-- Cảm biến: Kiểm tra định kỳ, dự phòng linh kiện.  
-- Chi phí: Cảnh báo ngân sách AWS, tối ưu dịch vụ.  
-
-*Kế hoạch dự phòng*  
-- Quay lại thu thập thủ công nếu AWS gặp sự cố.  
-- Sử dụng CloudFormation để khôi phục cấu hình liên quan đến chi phí.  
+- *Bảo mật thông tin:* Ảnh hưởng cao, xác suất thấp. (Giảm thiểu: Bắt buộc cấu hình Supabase RLS chặt chẽ, không lưu trữ thông tin xác thực ngân hàng dạng plaintext).  
+- *Sai lệch số dư (Data Inconsistency):* Ảnh hưởng cao, xác suất trung bình. (Giảm thiểu: Áp dụng cơ chế Database Transactions chặt chẽ cho mọi tác vụ liên quan đến dòng tiền).  
+- *Giới hạn tài nguyên Free-tier:* Ảnh hưởng trung bình, xác suất thấp. (Giảm thiểu: Theo dõi dung lượng cơ sở dữ liệu, chuẩn bị kịch bản nâng cấp gói dịch vụ khi cần).  
 
 ### 8. Kết quả kỳ vọng  
-*Cải tiến kỹ thuật*: Dữ liệu và phân tích thời gian thực thay thế quy trình thủ công. Có thể mở rộng tới 10–15 trạm.  
-*Giá trị dài hạn*: Nền tảng dữ liệu 1 năm cho nghiên cứu AI, có thể tái sử dụng cho các dự án tương lai.
+*Sản phẩm đầu ra:* Một hệ sinh thái ứng dụng quản lý tài chính hoạt động đồng bộ, mượt mà trên cả thiết bị di động và trình duyệt web.  
+*Giá trị dài hạn:* Số hóa toàn bộ lịch sử chi tiêu, tạo tiền đề dữ liệu vững chắc cho các ứng dụng tích hợp học máy (Machine Learning) nhằm phân tích, dự báo xu hướng tài chính trong các giai đoạn phát triển tiếp theo.

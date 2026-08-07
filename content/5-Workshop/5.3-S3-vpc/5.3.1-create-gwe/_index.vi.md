@@ -1,40 +1,29 @@
 ---
-title : "Tạo một Gateway Endpoint"
-date : 2024-01-01 
+title : "Tạo Amazon VPC"
+date : 2026-07-30
 weight : 1
 chapter : false
-pre : " <b> 5.3.1 </b> "
+pre : " <b> 5.3.1. </b> "
 ---
 
-1. Mở [Amazon VPC console](https://us-east-1.console.aws.amazon.com/vpc/home?region=us-east-1#Home:)
-2. Trong thanh điều hướng, chọn **Endpoints**, click **Create Endpoint**:
+#### Tạo Amazon VPC
 
-{{% notice note %}}
-Bạn sẽ thấy 6 điểm cuối VPC hiện có hỗ trợ AWS Systems Manager (SSM). Các điểm cuối này được Mẫu CloudFormation triển khai tự động cho workshop này.
-{{% /notice %}}
+Đầu tiên, mình tạo một Virtual Private Cloud (VPC) để làm môi trường mạng riêng cho toàn bộ hệ thống.
 
-![endpoint](/images/5-Workshop/5.3-S3-vpc/endpoints.png)
+1. Đăng nhập **AWS Management Console** và mở dịch vụ **Amazon VPC**.
+2. Chọn **Create VPC** và chọn cấu hình **VPC and more**.
+3. Cấu hình các thông số:
 
-3. Trong Create endpoint console:
-+ Đặt tên cho endpoint: s3-gwe
-+ Trong service category, chọn **aws services**
++ **Name tag:** `cloud-finance-vpc`
++ **IPv4 CIDR block:** `10.0.0.0/16`
++ **Availability Zones:** 2
++ **Public Subnets:** 2
++ **Private Subnets:** 4 (2 cho Application và 2 cho Database)
++ **NAT Gateway:** 1 (Single AZ)
++ Không cấu hình **VPC Endpoints** ở bước này.
 
-![endpoint](/images/5-Workshop/5.3-S3-vpc/create-s3-gwe1.png)
+4. Chọn **Create VPC** và chờ AWS hoàn tất việc khởi tạo hạ tầng mạng.
 
-+ Trong **Services**, gõ "s3" trong hộp tìm kiếm và chọn dịch vụ với loại **gateway**
+Sau khi hoàn thành, mình đã có một VPC với đầy đủ Subnets và Route Tables để phục vụ việc triển khai các dịch vụ ở các bước tiếp theo.
 
-![endpoint](/images/5-Workshop/5.3-S3-vpc/services.png)
-
-+ Đối với VPC, chọn **VPC Cloud** từ drop-down menu.
-+ Đối với Route tables, chọn bảng định tuyến mà đã liên kết với 2 subnets (lưu ý: đây không phải là bảng định tuyến chính cho VPC mà là bảng định tuyến thứ hai do CloudFormation tạo).
-
-![endpoint](/images/5-Workshop/5.3-S3-vpc/vpc.png)
-
-+ Đối với Policy, để tùy chọn mặc định là Full access để cho phép toàn quyền truy cập vào dịch vụ. Bạn sẽ triển khai VPC endpoint policy trong phần sau để chứng minh việc hạn chế quyền truy cập vào S3 bucket dựa trên các policies.
-
-![endpoint](/images/5-Workshop/5.3-S3-vpc/policy.png)
-
-+ Không thêm tag vào VPC endpoint.
-+ Click Create endpoint, click x sau khi nhận được thông báo tạo thành công.
-
-![endpoint](/images/5-Workshop/5.3-S3-vpc/complete.png)
+![vpc](/images/5-Workshop/5.3-Networking/create-vpc.png)

@@ -1,18 +1,13 @@
 ---
-title : "Truy cập S3 từ VPC"
-date : 2024-01-01 
+title : "Xây dựng hạ tầng mạng và bảo mật"
+date : 2026-07-30
 weight : 3
-chapter : false
+chapter : true
 pre : " <b> 5.3. </b> "
 ---
 
-#### Sử dụng Gateway endpoint
+Trong phần này, mình sẽ xây dựng hạ tầng mạng làm nền tảng cho toàn bộ hệ thống Cloud Finance Platform trên AWS.
 
-Trong phần này, bạn sẽ tạo một Gateway endpoint để truy cập Amazon S3 từ một EC2 instance. Gateway endpoint sẽ cho phép tải một object lên S3 bucket mà không cần sử dụng Internet Công cộng. Để tạo endpoint, bạn phải chỉ định VPC mà bạn muốn tạo endpoint và dịch vụ (trong trường hợp này là S3) mà bạn muốn thiết lập kết nối.
+Mục tiêu là tạo một Amazon VPC riêng biệt, phân tách Public Subnets và Private Subnets, đồng thời cấu hình Security Groups để kiểm soát lưu lượng truy cập giữa các thành phần của hệ thống.
 
-![overview](/images/5-Workshop/5.3-S3-vpc/diagram2.png)
-
-#### Nội dung
-
-- [Tạo gateway endpoint](3.1-create-gwe/)
-- [Test gateway endpoint](3.2-test-gwe/)
+Sau khi hoàn thành, hạ tầng mạng sẽ đáp ứng các yêu cầu về bảo mật, khả năng mở rộng và sẵn sàng cho việc triển khai các microservices trên Amazon ECS Fargate.
