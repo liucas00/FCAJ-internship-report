@@ -1,7 +1,7 @@
 ---
 title : "Triển khai Frontend lên Amazon S3 và CloudFront"
 date : 2026-07-31
-weight : 1
+weight : 7
 chapter : false
 pre : " <b> 5.7. </b> "
 ---

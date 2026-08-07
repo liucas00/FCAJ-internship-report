@@ -1,9 +1,9 @@
 ---
 title : "Create Amazon ECR Repositories"
 date : 2026-07-31
-weight : 1
+weight : 5
 chapter : false
-pre : " <b> 5.5.1. </b> "
+pre : " <b> 5.5. </b> "
 ---
 
 #### Create Amazon Elastic Container Registry

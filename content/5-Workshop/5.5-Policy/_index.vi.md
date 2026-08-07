@@ -1,7 +1,7 @@
 ---
 title : "Tạo Amazon ECR và đẩy Docker Images"
 date : 2026-07-31
-weight : 1
+weight : 5
 chapter : false
 pre : " <b> 5.5. </b> "
 ---
