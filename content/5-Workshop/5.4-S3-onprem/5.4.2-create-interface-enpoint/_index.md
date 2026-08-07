@@ -1,43 +1,28 @@
 ---
-title : "Create an S3 Interface endpoint"
-date : 2024-01-01
+title : "Create Amazon ElastiCache for Redis"
+date : 2026-07-31
 weight : 2
 chapter : false
-pre : " <b> 5.4.2 </b> "
+pre : " <b> 5.4.2. </b> "
 ---
 
-In this section you will create and test an S3 interface endpoint using the simulated on-premises environment deployed as part of this workshop.
+#### Create Amazon ElastiCache for Redis
 
-1. Return to the Amazon VPC menu. In the navigation pane, choose Endpoints, then click Create Endpoint.
+Next, I deploy Amazon ElastiCache for Redis to provide high-speed in-memory data storage.
 
-2. In Create endpoint console:
-+ Name the interface endpoint
-+ In Service category, choose **aws services** 
+The configuration steps are:
 
-![name](/images/5-Workshop/5.4-S3-onprem/s3-interface-endpoint1.png)
+1. Open **Amazon ElastiCache**.
+2. Select **Redis Caches** and create a new Redis cluster.
+3. Configure:
 
-3.  In the Search box, type S3 and press Enter. Select the endpoint named com.amazonaws.us-east-1.s3. Ensure that the Type column indicates Interface.
++ **Cluster Name:** `cloud-finance-redis`
++ **Node Type:** `cache.t4g.micro`
++ **Replicas:** `0`
 
-![service](/images/5-Workshop/5.4-S3-onprem/s3-interface-endpoint2.png)
+4. Select the `cloud-finance-vpc` and assign the `redis-sg` security group.
+5. Create the Redis cluster.
 
-4. For VPC, select VPC Cloud from the drop-down.
-{{% notice warning %}}
-Make sure to choose "VPC Cloud" and not "VPC On-prem"
-{{% /notice %}}
-+ Expand **Additional settings** and ensure that Enable DNS name is *not* selected (we will use this in the next part of the workshop)
+Redis is used for caching and asynchronous processing, improving the application's overall performance.
 
-![vpc](/images/5-Workshop/5.4-S3-onprem/s3-interface-endpoint3.png)
-
-5. Select 2 subnets in the following AZs: us-east-1a and us-east-1b
-
-![subnets](/images/5-Workshop/5.4-S3-onprem/s3-interface-endpoint4.png)
-
-6. For Security group, choose SGforS3Endpoint:
-
-![sg](/images/5-Workshop/5.4-S3-onprem/s3-interface-endpoint5.png)
-
-7. Keep the default policy - full access and click Create endpoint
-
-![success](/images/5-Workshop/5.4-S3-onprem/s3-interface-endpoint-success.png)
-
-Congratulation on successfully creating S3 interface endpoint. In the next step, we will test the interface endpoint.
+![redis](/images/5-Workshop/5.4-Database/redis.png)

@@ -1,57 +1,42 @@
 ---
-title : "Prepare the environment"
-date : 2024-01-01
+title : "Create Amazon RDS PostgreSQL"
+date : 2026-07-31
 weight : 1
 chapter : false
-pre : " <b> 5.4.1 </b> "
+pre : " <b> 5.4.1. </b> "
 ---
 
-To prepare for this part of the workshop you will need to:
-+ Deploying a CloudFormation stack 
-+ Modifying a VPC route table. 
+#### Create Amazon RDS PostgreSQL
 
-These components work together to simulate on-premises DNS forwarding and name resolution.
+I create an Amazon RDS PostgreSQL instance to serve as the primary database for the Cloud Finance Platform.
 
-#### Deploy the CloudFormation stack
+1. Open **Amazon RDS** and choose **Create database**.
+2. Select **Standard create**.
+3. Configure the following settings:
 
-The CloudFormation template will create additional services to support an on-premises simulation:
-+ One Route 53 Private Hosted Zone that hosts Alias records for the PrivateLink S3 endpoint
-+ One Route 53 Inbound Resolver endpoint that enables "VPC Cloud" to resolve inbound DNS resolution requests to the Private Hosted Zone
-+ One Route 53 Outbound Resolver endpoint that enables "VPC On-prem" to forward DNS requests for S3 to "VPC Cloud"
++ **Engine:** PostgreSQL 15 or later.
++ **Template:** Free Tier or Dev/Test.
++ **DB Instance Identifier:** `cloud-finance-postgres`
++ **Master Username:** `postgres`
++ **Master Password:** a strong password.
 
-![route 53 diagram](/images/5-Workshop/5.4-S3-onprem/route53.png)
+4. Configure connectivity:
 
-1. Click the following link to open the [AWS CloudFormation console](https://us-east-1.console.aws.amazon.com/cloudformation/home?region=us-east-1#/stacks/quickcreate?templateURL=https://s3.amazonaws.com/reinvent-endpoints-builders-session/R53CF.yaml&stackName=PLOnpremSetup). The required template will be pre-loaded into the menu. Accept all default and click Create stack.
++ Select the `cloud-finance-vpc`.
++ Disable **Public Access**.
++ Assign the `rds-sg` security group.
 
-![Create stack](/images/5-Workshop/5.4-S3-onprem/create-stack.png)
+5. Choose **Create database**.
 
-![Button](/images/5-Workshop/5.4-S3-onprem/create-stack-button.png)
+After the database becomes available, I create separate logical databases using the Database-per-service pattern:
 
-It may take a few minutes for stack deployment to complete. You can continue with the next step without waiting for the deployemnt to finish.
++ `auth_db`
++ `finance_db`
++ `ai_db`
++ `notifications_db`
++ `planning_db`
++ `recurring_db`
 
-#### Update on-premise private route table
+This architecture improves service isolation and scalability.
 
-This workshop uses a strongSwan VPN running on an EC2 instance to simulate connectivty between an on-premises datacenter and the AWS cloud. Most of the required components are provisioned before your start. To finalize the VPN configuration, you will modify the "VPC On-prem" routing table to direct traffic destined for the cloud to the strongSwan VPN instance.
-
-1. Open the Amazon EC2 console 
-
-2. Select the instance named infra-vpngw-test. From the Details tab, copy the Instance ID and paste this into your text editor
-
-![ec2 id](/images/5-Workshop/5.4-S3-onprem/ec2-onprem-id.png)
-
-3. Navigate to the VPC menu by using the Search box at the top of the browser window.
-
-4. Click on Route Tables, select the RT Private On-prem route table, select the Routes tab, and click Edit Routes.
-
-![rt](/images/5-Workshop/5.4-S3-onprem/rt.png)
-
-5. Click Add route.
-+ Destination: your Cloud VPC cidr range
-+ Target: ID of your infra-vpngw-test instance (you saved in your editor at step 1)
-
-![add route](/images/5-Workshop/5.4-S3-onprem/add-route.png)
-
-6. Click Save changes
-
-
-
+![rds](/images/5-Workshop/5.4-Database/rds.png)
