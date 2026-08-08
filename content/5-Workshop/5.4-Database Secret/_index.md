@@ -1,6 +1,8 @@
 ---
 title: "Database Tier & Security Configuration"
 weight: 4
+chapter : false
+pre : " <b> 5.4. </b> "
 ---
 
 ### Core Objective

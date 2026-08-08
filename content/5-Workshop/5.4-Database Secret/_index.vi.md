@@ -1,6 +1,8 @@
 ---
 title: "Tầng dữ liệu & Bảo mật cấu hình"
 weight: 4
+chapter : false
+pre : " <b> 5.4. </b> "
 ---
 
 ### Mục tiêu cốt lõi

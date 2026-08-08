@@ -6,11 +6,11 @@ chapter: false
 pre: " <b> 3. </b> "
 ---
 
-###  [Blog 1 - 7 IAM Best Practices giúp bảo vệ AWS Account hiệu quả hơn](3.1-Blog1/)
-Tìm hiểu 7 nguyên tắc IAM quan trọng giúp bảo vệ AWS Account an toàn hơn, từ việc hạn chế sử dụng Root User, bật MFA, áp dụng Least Privilege đến sử dụng IAM Role và CloudTrail. Đây là những best practices cơ bản nhưng rất cần thiết cho mọi hệ thống trên AWS.
+###  [Blog 1 - 7 IAM Best Practices for a More Secure AWS Account](3.1-Blog1/)
+Explore 7 essential IAM principles that help secure your AWS Account[cite: 2]. This covers crucial practices ranging from minimizing Root User access, enabling MFA, and applying the Least Privilege principle, to utilizing IAM Roles and CloudTrail[cite: 2]. These are fundamental yet vital best practices for any system running on AWS[cite: 2].
 
-###  [Blog 2 - Điều mình thích nhất là Auto Scaling không chỉ dành cho những hệ thống cực lớn.](3.2-Blog2/)
-Auto Scaling không chỉ dành cho những hệ thống có hàng triệu người dùng. Bài viết chia sẻ cách Amazon ECS Service Auto Scaling giúp ứng dụng tự mở rộng hoặc thu hẹp tài nguyên theo nhu cầu, tối ưu chi phí và nâng cao khả năng vận hành trên AWS.
+###  [Blog 2 - What I love most is that Auto Scaling isn't just for massive systems.](3.2-Blog2/)
+Auto Scaling is not exclusively for systems with millions of users[cite: 2]. This article discusses how Amazon ECS Service Auto Scaling enables your application to automatically scale resources up or down based on demand[cite: 2]. This helps optimize costs and improves operational capabilities on AWS[cite: 2].
 
-###  [Blog 3 - Quản lý thông tin nhạy cảm trên AWS: Khi file .env không còn là lựa chọn tối ưu](3.3-Blog3/)
-Tìm hiểu vì sao file .env không còn là lựa chọn phù hợp trên môi trường Production và cách AWS Secrets Manager cùng Systems Manager Parameter Store giúp quản lý thông tin nhạy cảm an toàn, linh hoạt hơn.
+###  [Blog 3 - Managing Sensitive Information on AWS: When the .env file is no longer the optimal choice](3.3-Blog3/)
+Discover why the .env file is no longer suitable for Production environments[cite: 2]. Learn how AWS Secrets Manager and Systems Manager Parameter Store provide a more secure and flexible way to manage sensitive information[cite: 2].

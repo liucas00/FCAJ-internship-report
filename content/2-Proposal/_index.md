@@ -1,115 +1,77 @@
 ---
 title: "Proposal"
-date: 2024-01-01
+date: 2026-07-15
 weight: 2
 chapter: false
 pre: " <b> 2. </b> "
 ---
-{{% notice warning %}}
-⚠️ **Note:** The information below is for reference purposes only. Please **do not copy verbatim** for your report, including this warning.
-{{% /notice %}}
 
-In this section, you need to summarize the contents of the workshop that you **plan** to conduct.
+# Cloud Finance Platform  
+## Cross-Platform Real-Time Financial Management Solution  
 
-# IoT Weather Platform for Lab Research
-## A Unified AWS Serverless Solution for Real-Time Weather Monitoring
+### 1. Executive Summary  
+The Cloud Finance Platform is a financial management system designed to address the issue of scattered cash flows across multiple payment channels. This platform offers a comprehensive solution featuring a mobile application and a web dashboard, enabling users to track income and expenses, synchronize wallets, and manage transactions in real time. The system leverages a Backend-as-a-Service (BaaS) architecture using Supabase, paired with Flutter (Dart) for mobile devices and ReactJS (TypeScript) for the web. This stack ensures high performance, robust data security, and flexible scalability.  
 
-### 1. Executive Summary
-The IoT Weather Platform is designed for the ITea Lab team in Ho Chi Minh City to enhance weather data collection and analysis. It supports up to 5 weather stations, with potential scalability to 10-15, utilizing Raspberry Pi edge devices with ESP32 sensors to transmit data via MQTT. The platform leverages AWS Serverless services to deliver real-time monitoring, predictive analytics, and cost efficiency, with access restricted to 5 lab members via Amazon Cognito.
+### 2. Problem Statement  
+*Current Issues*  
+Transacting through various payment channels, e-wallets, and banks (such as Techcombank, MoMo, Cake, and ShopeePay) leads to fragmented cash flows. Tracking transaction history, aggregating expenses, and monitoring budgets are currently handled mostly manually. This process is time-consuming and prone to errors. Existing market solutions often lack the customization needed for personalized data flows or are overly complex to operate.  
 
-### 2. Problem Statement
-### What’s the Problem?
-Current weather stations require manual data collection, becoming unmanageable with multiple units. There is no centralized system for real-time data or analytics, and third-party platforms are costly and overly complex.
+*The Solution*  
+This project builds a unified cloud finance platform. The system uses the Supabase ecosystem (PostgreSQL, Auth, Storage) as its central data processing hub. Users interact with the platform through two main touchpoints: a dedicated Mobile App (Flutter) for quick wallet synchronization, updates, and daily transaction tracking, and a Web Dashboard (ReactJS + TypeScript) optimized for in-depth data visualization, statistics, and analytical reports.  
 
-### The Solution
-The platform uses AWS IoT Core to ingest MQTT data, AWS Lambda and API Gateway for processing, Amazon S3 for storage (including a data lake), and AWS Glue Crawlers and ETL jobs to extract, transform, and load data from the S3 data lake to another S3 bucket for analysis. AWS Amplify with Next.js provides the web interface, and Amazon Cognito ensures secure access. Similar to Thingsboard and CoreIoT, users can register new devices and manage connections, though this platform operates on a smaller scale and is designed for private use. Key features include real-time dashboards, trend analysis, and low operational costs.
+*Benefits and ROI*  
+Digitizing and automating the reconciliation process across different funding sources provides clear financial transparency. Utilizing an open-source Cloud/BaaS architecture keeps operational expenses (OpEx) for servers to an absolute minimum. Furthermore, the platform establishes a highly structured database, laying the groundwork for future research, behavioral analysis algorithms, and cash flow forecasting.  
 
-### Benefits and Return on Investment
-The solution establishes a foundational resource for lab members to develop a larger IoT platform, serving as a study resource, and provides a data foundation for AI enthusiasts for model training or analysis. It reduces manual reporting for each station via a centralized platform, simplifying management and maintenance, and improves data reliability. Monthly costs are $0.66 USD per the AWS Pricing Calculator, with a 12-month total of $7.92 USD. All IoT equipment costs are covered by the existing weather station setup, eliminating additional development expenses. The break-even period of 6-12 months is achieved through significant time savings from reduced manual work.
+### 3. Solution Architecture  
+The platform follows a Client-Server architecture that strictly separates the user interface from data processing logic, taking full advantage of Cloud Services to maintain real-time synchronization.  
 
-### 3. Solution Architecture
-The platform employs a serverless AWS architecture to manage data from 5 Raspberry Pi-based stations, scalable to 15. Data is ingested via AWS IoT Core, stored in an S3 data lake, and processed by AWS Glue Crawlers and ETL jobs to transform and load it into another S3 bucket for analysis. Lambda and API Gateway handle additional processing, while Amplify with Next.js hosts the dashboard, secured by Cognito. The architecture is detailed below:
+![Architecture Diagram](https://vvinh118.github.io/fcaj-workshop/2-proposal/architecture.png)
 
-![IoT Weather Station Architecture](/images/2-Proposal/edge_architecture.jpeg)
+*Services & Technologies*  
+- **Frontend (Mobile):** Flutter (Dart) – Manages the wallet synchronization UI and transaction flows (wallet/transaction screens).  
+- **Frontend (Web):** ReactJS with TypeScript – Powers the administrative and analytical dashboard, hosted via services like AWS Amplify or Vercel.  
+- **Backend & Database:** Supabase – Provides the PostgreSQL database, Row Level Security (RLS), and Realtime subscriptions.  
+- **Authentication:** Supabase Auth – Handles user identity and secure login sessions.  
 
-![IoT Weather Platform Architecture](/images/2-Proposal/platform_architecture.jpeg)
+*Component Design*  
+- *Data Model:* An optimized database schema containing core entities: `Users`, `Wallets` (Banks, E-wallets), `Transactions`, and `Categories`.  
+- *Devices & Interfaces:* The mobile app is tailored for rapid data entry and tracking wallet balances. The web app provides a broader workspace for viewing financial charts and tables.  
+- *Data Processing:* Balance calculations and data logic are managed directly via PostgreSQL or integrated API functions.  
 
-### AWS Services Used
-- **AWS IoT Core**: Ingests MQTT data from 5 stations, scalable to 15.
-- **AWS Lambda**: Processes data and triggers Glue jobs (two functions).
-- **Amazon API Gateway**: Facilitates web app communication.
-- **Amazon S3**: Stores raw data in a data lake and processed outputs (two buckets).
-- **AWS Glue**: Crawlers catalog data, and ETL jobs transform and load it.
-- **AWS Amplify**: Hosts the Next.js web interface.
-- **Amazon Cognito**: Secures access for lab users.
+### 4. Technical Implementation  
+*Deployment Phases*  
+The project is structured into four main phases to maintain progress and ensure code stability:  
+1. *Research & System Design:* Draft the Entity-Relationship Diagram (ERD), define UI/UX flows, and outline the repository structure (`cloud-finance-platform`).  
+2. *Backend Initialization:* Provision the Supabase project, configure the database schema, and apply Row Level Security (RLS) to enforce data privacy.  
+3. *Mobile App Development:* Build the Flutter application, focusing heavily on the Supabase integration module, user authentication, and wallet management screens.  
+4. *Web Dashboard Development & Testing:* Finalize the web interface using ReactJS/TypeScript, connect the APIs, execute end-to-end testing across the entire platform, and deploy.  
 
-### Component Design
-- **Edge Devices**: Raspberry Pi collects and filters sensor data, sending it to IoT Core.
-- **Data Ingestion**: AWS IoT Core receives MQTT messages from the edge devices.
-- **Data Storage**: Raw data is stored in an S3 data lake; processed data is stored in another S3 bucket.
-- **Data Processing**: AWS Glue Crawlers catalog the data, and ETL jobs transform it for analysis.
-- **Web Interface**: AWS Amplify hosts a Next.js app for real-time dashboards and analytics.
-- **User Management**: Amazon Cognito manages user access, allowing up to 5 active accounts.
+*Technical Requirements*  
+- *Mobile/Web:* Practical knowledge of ReactJS component structures, state management in Flutter, and handling asynchronous operations.  
+- *Backend/Cloud:* Proficiency in the Supabase API and writing SQL logic for financial transactions to guarantee data integrity (ACID properties).  
 
-### 4. Technical Implementation
-**Implementation Phases**
-This project has two parts—setting up weather edge stations and building the weather platform—each following 4 phases:
-- Build Theory and Draw Architecture: Research Raspberry Pi setup with ESP32 sensors and design the AWS serverless architecture (1 month pre-internship)
-- Calculate Price and Check Practicality: Use AWS Pricing Calculator to estimate costs and adjust if needed (Month 1).
-- Fix Architecture for Cost or Solution Fit: Tweak the design (e.g., optimize Lambda with Next.js) to stay cost-effective and usable (Month 2).
-- Develop, Test, and Deploy: Code the Raspberry Pi setup, AWS services with CDK/SDK, and Next.js app, then test and release to production (Months 2-3).
+### 5. Roadmap & Milestones  
+- *Phase 1 (Design & Initialization):* Finalize the database architecture, provision the Supabase environment, and design UI/UX mockups.  
+- *Phase 2 (Core Development):* Deliver the MVP for the Flutter app with full CRUD capabilities for transactions and balance synchronization.  
+- *Phase 3 (Web & Expansion):* Develop the Web Dashboard using ReactJS and integrate statistical reporting modules.  
+- *Phase 4 (Operation & Evaluation):* Conduct security audits, optimize overall performance, and launch the platform for practical use.  
 
-**Technical Requirements**
-- Weather Edge Station: Sensors (temperature, humidity, rainfall, wind speed), a microcontroller (ESP32), and a Raspberry Pi as the edge device. Raspberry Pi runs Raspbian, handles Docker for filtering, and sends 1 MB/day per station via MQTT over Wi-Fi.
-- Weather Platform: Practical knowledge of AWS Amplify (hosting Next.js), Lambda (minimal use due to Next.js), AWS Glue (ETL), S3 (two buckets), IoT Core (gateway and rules), and Cognito (5 users). Use AWS CDK/SDK to code interactions (e.g., IoT Core rules to S3). Next.js reduces Lambda workload for the fullstack web app.
+### 6. Budget Estimation  
+By adopting a BaaS architecture, upfront infrastructure costs are strictly optimized.
 
-### 5. Timeline & Milestones
-**Project Timeline**
-- Pre-Internship (Month 0): 1 month for planning and old station review.
-- Internship (Months 1-3): 3 months.
-    - Month 1: Study AWS and upgrade hardware.
-    - Month 2: Design and adjust architecture.
-    - Month 3: Implement, test, and launch.
-- Post-Launch: Up to 1 year for research.
+*Estimated Infrastructure Costs*  
+- **Supabase (Database/Auth):** $0.00/month (Utilizing the Free Tier, which supports up to 500MB Database storage and 50,000 MAUs).  
+- **Web Hosting (Vercel/Amplify):** $0.00/month (Basic tier for the web platform).  
+- **Domain Name:** Estimated at ~$1.00 - $1.50/month.  
 
-### 6. Budget Estimation
-You can find the budget estimation on the [AWS Pricing Calculator](https://calculator.aws/#/estimate?id=621f38b12a1ef026842ba2ddfe46ff936ed4ab01).  
-Or you can download the [Budget Estimation File](../attachments/budget_estimation.pdf).
+*Total Operating Cost:* ~$1.50/month (during the initial MVP phase for personal use).  
 
-### Infrastructure Costs
-- AWS Services:
-    - AWS Lambda: $0.00/month (1,000 requests, 512 MB storage).
-    - S3 Standard: $0.15/month (6 GB, 2,100 requests, 1 GB scanned).
-    - Data Transfer: $0.02/month (1 GB inbound, 1 GB outbound).
-    - AWS Amplify: $0.35/month (256 MB, 500 ms requests).
-    - Amazon API Gateway: $0.01/month (2,000 requests).
-    - AWS Glue ETL Jobs: $0.02/month (2 DPUs).
-    - AWS Glue Crawlers: $0.07/month (1 crawler).
-    - MQTT (IoT Core): $0.08/month (5 devices, 45,000 messages).
+### 7. Risk Assessment  
+*Risk Matrix*  
+- *Information Security:* High impact, low probability. (Mitigation: Enforce strict Supabase RLS configurations; banking credentials will never be stored in plaintext).  
+- *Data Inconsistency (Balance mismatch):* High impact, medium probability. (Mitigation: Implement rigorous Database Transactions for any tasks involving cash flow modifications).  
+- *Free-tier Resource Limits:* Medium impact, low probability. (Mitigation: Actively monitor database storage capacity and prepare an upgrade path for service plans when necessary).  
 
-Total: $0.7/month, $8.40/12 months
-
-- Hardware: $265 one-time (Raspberry Pi 5 and sensors).
-
-### 7. Risk Assessment
-#### Risk Matrix
-- Network Outages: Medium impact, medium probability.
-- Sensor Failures: High impact, low probability.
-- Cost Overruns: Medium impact, low probability.
-
-#### Mitigation Strategies
-- Network: Local storage on Raspberry Pi with Docker.
-- Sensors: Regular checks and spares.
-- Cost: AWS budget alerts and optimization.
-
-#### Contingency Plans
-- Revert to manual methods if AWS fails.
-- Use CloudFormation for cost-related rollbacks.
-
-### 8. Expected Outcomes
-#### Technical Improvements: 
-Real-time data and analytics replace manual processes.  
-Scalable to 10-15 stations.
-#### Long-term Value
-1-year data foundation for AI research.  
-Reusable for future projects.
+### 8. Expected Outcomes  
+*Deliverables:* A cohesive financial management application ecosystem that operates smoothly and synchronously across both mobile devices and web browsers.  
+*Long-term Value:* Digitizing the user's entire spending history establishes a solid, structured dataset. This data will serve as the foundation for integrating Machine Learning models to analyze spending behaviors and forecast financial trends in future iterations.
