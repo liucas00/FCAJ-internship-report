@@ -1,18 +1,13 @@
 ---
-title : "Access S3 from VPC"
-date : 2024-01-01
-weight : 3
-chapter : false
-pre : " <b> 5.3. </b> "
+title : "Building Network and Security Infrastructure"[cite: 2]
+date : 2026-07-30[cite: 2]
+weight : 3[cite: 2]
+chapter : true[cite: 2]
+pre : " <b> 5.3. </b> "[cite: 2]
 ---
 
-#### Using Gateway endpoint
+In this section, we will build the network infrastructure as the foundation for the entire Cloud Finance Platform system on AWS.[cite: 2]
 
-In this section, you will create **a Gateway eendpoint** to access **Amazon S3** from **an EC2 instance**. **The Gateway endpoint** will allow upload an object to S3 buckets without using **the Public Internet**. To create an endpoint, you must specify the VPC in which you want to create the endpoint, and the service (in this case, S3) to which you want to establish the connection.
+The goal is to create a separate Amazon VPC, separating Public Subnets and Private Subnets, and simultaneously configuring Security Groups to control traffic between the components of the system.[cite: 2]
 
-![overview](/images/5-Workshop/5.3-S3-vpc/diagram2.png)
-
-#### Content
-
-- [Create gateway endpoint](3.1-create-gwe/)
-- [Test gateway endpoint](3.2-test-gwe/)
+Once completed, the network infrastructure will meet the requirements for security and scalability, and will be ready for the deployment of microservices on Amazon ECS Fargate.[cite: 2]

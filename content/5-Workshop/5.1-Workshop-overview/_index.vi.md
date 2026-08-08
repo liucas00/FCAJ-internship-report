@@ -25,4 +25,15 @@ Trong workshop này, bạn sẽ thực hiện các bước chính sau:
 + Cấu hình quy trình CI/CD bằng GitHub Actions để tự động hóa việc triển khai.
 + Thực hiện dọn dẹp tài nguyên sau khi hoàn thành workshop nhằm tối ưu chi phí AWS.
 
-![overview](/images/5-Workshop/5.1-Workshop-overview/architecture.png)
+#### Tổng quan Kiến trúc
+
+Kiến trúc hệ thống của **Cloud Finance Platform** được thiết kế để đảm bảo tính sẵn sàng cao, bảo mật và khả năng mở rộng bằng cách sử dụng các dịch vụ Cloud-Native trên AWS:
+
+* **Tầng Edge & Frontend:** Người dùng truy cập ứng dụng Web/Mobile thông qua **Amazon CloudFront**, dịch vụ này phân phối Frontend (SPA) được lưu trữ trên **Amazon S3**. **AWS WAF** được gắn vào CloudFront để bảo vệ ứng dụng khỏi các luồng truy cập độc hại.
+* **Mạng & Định tuyến:** Hạ tầng mạng được đặt trong **Amazon VPC**. Lưu lượng truy cập từ Internet sẽ đi qua **Application Load Balancer (ALB)** ở Public Subnets để điều phối request đến các dịch vụ Backend ở phía sau.
+* **Tầng Ứng dụng (Microservices):** Các microservices (Gateway, Auth, Finance, AI Agent, OCR, Notification...) được triển khai trên **Amazon ECS (AWS Fargate)** nằm trong các Private Subnets. Riêng AI Agent Service sẽ có kết nối với bên ngoài để gọi **External LLM API (Gemini)**.
+* **Tầng Dữ liệu:** Đặt tại Private DB Subnets, hệ thống sử dụng **Amazon RDS for PostgreSQL** làm cơ sở dữ liệu quan hệ cho từng service và **Amazon ElastiCache for Redis** để xử lý caching, queue (hàng đợi). Một S3 Bucket riêng biệt khác được dùng để lưu trữ file hóa đơn (receipts) và file trích xuất (exports).
+* **Quy trình CI/CD:** Mã nguồn từ **GitHub** sẽ kích hoạt **GitHub Actions** để tự động build và đẩy Docker Image lên **Amazon ECR**, từ đó triển khai phiên bản mới xuống Amazon ECS.
+* **Giám sát & Bảo mật:** Hệ thống sử dụng **AWS Secrets Manager** để quản lý biến môi trường nhạy cảm, **Amazon CloudWatch** để theo dõi log/metric, và **Amazon SES** để phục vụ việc gửi email (OTP, thông báo).
+
+![Kiến trúc hệ thống](/images/5-Workshop/5.1-Workshop-overview/architect.jpg)
