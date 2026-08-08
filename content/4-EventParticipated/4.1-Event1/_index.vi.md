@@ -6,8 +6,6 @@ chapter: false
 pre: " <b> 4.1. </b> "
 ---
 
-# Event 1: Cloud Architect
-
 ## Thông tin sự kiện
 
 - **Tên sự kiện:** Cloud Architect

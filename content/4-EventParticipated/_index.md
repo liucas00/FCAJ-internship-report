@@ -6,8 +6,6 @@ chapter: false
 pre: " <b> 4. </b> "
 ---
 
-# Events Participated
-
 During my internship, I had the opportunity to join several activities related to AWS, Cloud Computing, and Generative AI. These events provided a different learning experience from studying through documentation or tutorials because the topics were presented through competitions, technical discussions, and hands-on activities.
 
 I participated in three main events:

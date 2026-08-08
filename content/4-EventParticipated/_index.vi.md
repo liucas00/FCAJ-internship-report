@@ -5,8 +5,6 @@ chapter: false
 pre: " <b> 4. </b> "
 ---
 
-# Các sự kiện đã tham gia
-
 Trong thời gian thực tập, em có cơ hội tham gia nhiều hoạt động liên quan đến AWS, Cloud Computing và Generative AI. Bên cạnh việc học kiến thức qua tài liệu và workshop, các sự kiện thực tế giúp em hiểu rõ hơn cách những kiến thức này được áp dụng trong môi trường làm việc và cộng đồng công nghệ.
 
 Ba sự kiện em tham gia gồm cuộc thi **Cloud Architect**, chương trình **Cloud Architect x Meet Up** và **AWS FIRST CLOUD AI JOURNEY - Agent Forge Deep Dive Day 2**.

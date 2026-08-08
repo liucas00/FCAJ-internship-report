@@ -6,8 +6,6 @@ chapter: false
 pre: " <b> 4.1. </b> "
 ---
 
-# Event 1: Cloud Architect
-
 ## Event Details
 
 - **Event:** Cloud Architect

@@ -6,8 +6,6 @@ chapter: false
 pre: " <b> 4.2. </b> "
 ---
 
-# Event 2: Cloud Architect x Meet Up
-
 ## Event Information
 
 - **Event:** Cloud Architect x Meet Up

@@ -6,8 +6,6 @@ chapter: false
 pre: " <b> 4.3. </b> "
 ---
 
-# Event 3: AWS FCAJ Agent Forge - Deep Dive Day 2
-
 ## Thông tin sự kiện
 
 - **Tên sự kiện:** AWS FIRST CLOUD AI JOURNEY - AGENT FORGE DEEP DIVE
