@@ -36,4 +36,4 @@ Kiến trúc hệ thống của **Cloud Finance Platform** được thiết kế
 * **Quy trình CI/CD:** Mã nguồn từ **GitHub** sẽ kích hoạt **GitHub Actions** để tự động build và đẩy Docker Image lên **Amazon ECR**, từ đó triển khai phiên bản mới xuống Amazon ECS.
 * **Giám sát & Bảo mật:** Hệ thống sử dụng **AWS Secrets Manager** để quản lý biến môi trường nhạy cảm, **Amazon CloudWatch** để theo dõi log/metric, và **Amazon SES** để phục vụ việc gửi email (OTP, thông báo).
 
-![Kiến trúc hệ thống](/FCAJ-internship-report/images/5-Workshop/5.1-Workshop-overview/architect.jpg)
+![Kiến trúc hệ thống](/FCAJ-internship-report/images/5-Workshop/5.1-Workshop-overview/architect.png)
