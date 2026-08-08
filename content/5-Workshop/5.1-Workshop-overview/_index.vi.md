@@ -10,11 +10,11 @@ pre : " <b> 5.1. </b> "
 
 Chào mừng bạn đến với workshop **Xây dựng và triển khai toàn diện hệ thống quản lý tài chính cá nhân tích hợp AI lên AWS (Cloud-Native Microservices)**.
 
-Workshop hướng dẫn xây dựng và vận hành **Cloud Finance Platform** – một nền tảng quản lý tài chính cá nhân thông minh ứng dụng AI, NLP và OCR. Người học sẽ triển khai toàn bộ hệ thống trên AWS theo kiến trúc Cloud-Native Microservices.
+Workshop hướng dẫn xây dựng và vận hành **Cloud Finance Platform** – một nền tảng quản lý tài chính cá nhân thông minh ứng dụng AI, NLP và OCR. Mình sẽ triển khai toàn bộ hệ thống trên AWS theo kiến trúc Cloud-Native Microservices.
 
 #### Nội dung workshop
 
-Trong workshop này, bạn sẽ thực hiện các bước chính sau:
+Trong workshop này, mình sẽ thực hiện các bước chính sau:
 
 + Chuẩn bị môi trường phát triển và tài khoản AWS.
 + Xây dựng hạ tầng mạng và bảo mật với Amazon VPC, Subnets và Security Groups.
@@ -36,4 +36,4 @@ Kiến trúc hệ thống của **Cloud Finance Platform** được thiết kế
 * **Quy trình CI/CD:** Mã nguồn từ **GitHub** sẽ kích hoạt **GitHub Actions** để tự động build và đẩy Docker Image lên **Amazon ECR**, từ đó triển khai phiên bản mới xuống Amazon ECS.
 * **Giám sát & Bảo mật:** Hệ thống sử dụng **AWS Secrets Manager** để quản lý biến môi trường nhạy cảm, **Amazon CloudWatch** để theo dõi log/metric, và **Amazon SES** để phục vụ việc gửi email (OTP, thông báo).
 
-![Kiến trúc hệ thống](/images/5-Workshop/5.1-Workshop-overview/architect.jpg)
+![Kiến trúc hệ thống](/FCAJ-internship-report/images/5-Workshop/5.1-Workshop-overview/architect.jpg)

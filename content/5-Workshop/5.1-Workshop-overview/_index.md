@@ -10,11 +10,11 @@ pre : " <b> 5.1. </b> "
 
 Welcome to the workshop **Building and Deploying an AI-Powered Personal Finance Management System on AWS (Cloud-Native Microservices)**.
 
-This workshop demonstrates how to build and operate the **Cloud Finance Platform**, an intelligent personal finance management system powered by AI, Natural Language Processing (NLP), and Optical Character Recognition (OCR). Participants will deploy the complete solution using a cloud-native microservices architecture on AWS.
+This workshop demonstrates how to build and operate the **Cloud Finance Platform**, an intelligent personal finance management system powered by AI, Natural Language Processing (NLP), and Optical Character Recognition (OCR). I will deploy the complete solution using a cloud-native microservices architecture on AWS.
 
 #### Workshop Overview
 
-In this workshop, you will learn how to:
+In this workshop, I will learn how to:
 
 + Prepare the development environment and AWS account.
 + Build secure networking infrastructure using Amazon VPC, Subnets, and Security Groups.
@@ -36,4 +36,4 @@ The system architecture for the **Cloud Finance Platform** is designed for high 
 * **CI/CD Pipeline:** The CI/CD flow uses **GitHub Actions** to automatically build and push container images to **Amazon ECR**, which triggers deployment updates on Amazon ECS.
 * **Observability & Security:** **AWS Secrets Manager** securely stores configuration data, **Amazon CloudWatch** handles central logging and metrics, and **Amazon SES** manages outgoing emails (e.g., OTPs and notifications).
 
-![System Architecture](/images/5-Workshop/5.1-Workshop-overview/architect.jpg)
+![System Architecture](/FCAJ-internship-report/images/5-Workshop/5.1-Workshop-overview/architect.jpg)
