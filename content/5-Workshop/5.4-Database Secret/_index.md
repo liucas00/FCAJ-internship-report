@@ -1,25 +1,47 @@
 ---
-title: "Initializing Data Layer and Configuration Management"
-date: 2026-07-31
-weight: 4
+title: "Building Network and Security Infrastructure"
+date: 2026-07-30
+weight: 3
 chapter: true
-pre: "<b> 5.4. </b>"
+pre: "<b> 5.3. </b>"
 ---
 
-### Overview
-In this section, we deploy the robust data layer serving the entire Cloud Finance Platform system[cite: 9]. By decoupling the data tier from the application logic, we create a highly secure, efficient, and resilient architecture.
+### Network Architecture Goals
 
-### Core Data Components
-We will provision and configure the following AWS services to handle persistent storage, caching, and secret management:
+To ensure the security of the application and databases, I prepare a well-isolated Virtual Private Cloud (VPC) with clear network boundaries. 
 
-*   **Amazon RDS PostgreSQL:** Deployed for reliable relational data storage[cite: 9]. It acts as the primary database, ensuring transactional integrity and secure storage for all financial records.
-*   **Amazon ElastiCache for Redis:** Implemented to significantly accelerate temporary data processing[cite: 9]. This in-memory caching system reduces database load and speeds up response times for frequently accessed data.
-*   **AWS Secrets Manager:** Utilized to centrally manage sensitive information such as database passwords and API Keys[cite: 9]. This ensures credentials are dynamically injected into our microservices securely, rather than being hardcoded in the source code.
+The strategy is to divide the network into two distinct layers:
 
-### Architecture Diagram
-Below is the architectural flow of the Data and Configuration Layer within our Private Subnets:
+*   **Public Subnet**: The internet-facing zone. I place the Load Balancer here to handle incoming external traffic.
+*   **Private Subnet**: A highly secure, isolated zone with no direct internet access. All application containers and databases reside here.
 
-![Data Layer Architecture](https://vvinh118.github.io/fcaj-workshop/images/5-Workshop/5.4-Data-layer/database-diagram.png)
+### Provisioning the VPC
 
-### Expected Outcomes
-Separating the data layer provides significant architectural advantages, ensuring the system maintains high security, scalability, and operational convenience[cite: 9]. The infrastructure is now fully prepared to seamlessly integrate with the backend microservices.
+I set up the base network using the automated configuration tool in AWS. The steps are as follows:
+
+1. Log in to the AWS Management Console and navigate to the **VPC** service.
+2. From the **VPC Dashboard**, click **Create VPC**.
+3. Select the **VPC and more** option so AWS handles the routing tables and subnets automatically.
+4. Configure the following network parameters:
+    *   **Name tag auto-generation**: `cloud-finance-vpc`
+    *   **IPv4 CIDR block**: `10.0.0.0/16`
+    *   **Tenancy**: `Default`
+    *   **Number of Availability Zones (AZs)**: `2` (selecting zones like `ap-southeast-1a` and `ap-southeast-1b` for redundancy).
+    *   **Number of public subnets**: `2`
+    *   **Number of private subnets**: `4` (allocating 2 for ECS workloads and 2 for Databases).
+    *   **NAT gateways**: Select `1 NAT gateway` (kept in a Single AZ to optimize costs).
+    *   **VPC endpoints**: None.
+5. Click **Create VPC** and wait for the infrastructure to be provisioned.
+
+![VPC Creation Process](https://vvinh118.github.io/fcaj-workshop/5-workshop/5.3-networking/vpc-created.png)
+
+### Configuring Security Groups
+
+Next, I define 4 specific Security Groups. By applying the principle of least privilege, I ensure that resources can only communicate with authorized components.
+
+*   **`alb-sg` (For Load Balancer):** Allows inbound traffic from anywhere (`0.0.0.0/0`) on port `80` (HTTP) and port `443` (HTTPS).
+*   **`ecs-sg` (For Microservices):** Restricts inbound traffic to port `8000`, accepting requests only from the `alb-sg`. Internal communication among services within this group is permitted.
+*   **`rds-sg` (For PostgreSQL):** Allows inbound connections on port `5432` strictly from `ecs-sg`. This database is completely inaccessible from the public internet.
+*   **`redis-sg` (For ElastiCache Redis):** Similar to the RDS instance, opens port `6379` only to incoming traffic from `ecs-sg`, serving the Notification Worker.
+
+![Security Groups Configuration](https://vvinh118.github.io/fcaj-workshop/5-workshop/5.3-networking/security-groups.png)
