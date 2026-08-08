@@ -1,125 +1,122 @@
 ---
-title: "Event 2"
-date: 2024-01-01
-weight: 1
+title: "Event 2: Cloud Architect x Meet Up"
+date: 2026-07-11
+weight: 2
 chapter: false
 pre: " <b> 4.2. </b> "
 ---
 
-{{% notice warning %}}
-⚠️ **Lưu ý:** Các thông tin dưới đây chỉ nhằm mục đích tham khảo, vui lòng **không sao chép nguyên văn** cho bài báo cáo của bạn kể cả warning này.
-{{% /notice %}}
+# Event 2: Cloud Architect x Meet Up
 
-# Bài thu hoạch “GenAI-powered App-DB Modernization workshop”
+## Tổng quan
 
-### Mục Đích Của Sự Kiện
+- **Tên sự kiện:** Cloud Architect x Meet Up
+- **Ngày tổ chức:** 11/07/2026
+- **Địa điểm:** Tầng 26, Tòa nhà Bitexco Financial Tower, Thành phố Hồ Chí Minh
+- **Vai trò:** Người tham dự
 
-- Chia sẻ best practices trong thiết kế ứng dụng hiện đại
-- Giới thiệu phương pháp DDD và event-driven architecture
-- Hướng dẫn lựa chọn compute services phù hợp
-- Giới thiệu công cụ AI hỗ trợ development lifecycle
+Sự kiện Cloud Architect x Meet Up diễn ra vào ngày 11/07/2026, kết hợp giữa trận chung kết cuộc thi Cloud Architect và các phiên chia sẻ kỹ thuật.
 
-### Danh Sách Diễn Giả
+Đây là một sự kiện khá đặc biệt vì phần đầu mang tính cạnh tranh, trong khi phần sau tập trung vào những vấn đề thực tế trong bảo mật và vận hành hệ thống.
 
-- **Jignesh Shah** - Director, Open Source Databases
-- **Erica Liu** - Sr. GTM Specialist, AppMod
-- **Fabrianne Effendi** - Assc. Specialist SA, Serverless Amazon Web Services
+## Chung kết Cloud Architect
 
-### Nội Dung Nổi Bật
+Sau các vòng thi trước đó, hai đội có thành tích tốt nhất là **KLKAT** và **Ngũ Đại Hiệp** bước vào trận chung kết.
 
-#### Đưa ra các ảnh hưởng tiêu cực của kiến trúc ứng dụng cũ
+So với vòng trước, các câu hỏi trong trận cuối tập trung nhiều hơn vào các bài toán kiến trúc phức tạp.
 
-- Thời gian release sản phẩm lâu → Mất doanh thu/bỏ lỡ cơ hội
-- Hoạt động kém hiệu quả → Mất năng suất, tốn kém chi phí
-- Không tuân thủ các quy định về bảo mật → Mất an ninh, uy tín
+### Phân bố câu hỏi
 
-#### Chuyển đổi sang kiến trúc ứng dụng mới - Microservice Architecture
+| Cấp độ | Nội dung chính | Điểm/câu |
+|---|---|---:|
+| Practitioner | Kiến thức cơ bản, AWS Pricing | 10 |
+| Associate | HA, Auto Scaling, ELB, EC2, S3, VPC, RDS | 20 |
+| Professional | Enterprise Architecture, Migration, Multi-Account, hệ thống quy mô lớn | 50 |
 
-Chuyển đổi thành hệ thống modular – từng chức năng là một **dịch vụ độc lập** giao tiếp với nhau qua **sự kiện** với 3 trụ cột cốt lõi:
+Trong đó, nhóm câu hỏi Professional chiếm tỷ trọng lớn nhất. Vì vậy, các đội phải có khả năng nhìn nhận bài toán ở mức architecture thay vì chỉ lựa chọn dịch vụ riêng lẻ.
 
-- **Queue Management**: Xử lý tác vụ bất đồng bộ
-- **Caching Strategy:** Tối ưu performance
-- **Message Handling:** Giao tiếp linh hoạt giữa services
+### Kết quả
 
-#### Domain-Driven Design (DDD)
+Kết quả chung cuộc:
 
-- **Phương pháp 4 bước**: Xác định domain events → sắp xếp timeline → identify actors → xác định bounded contexts
-- **Case study bookstore**: Minh họa cách áp dụng DDD thực tế
-- **Context mapping**: 7 patterns tích hợp bounded contexts
+- **Hạng 1:** KLKAT
+- **Hạng 2:** Ngũ Đại Hiệp
+- **Hạng 3:** Young Flame IT
 
-#### Event-Driven Architecture
+Đội KLKAT giành chức vô địch nhờ chiến thuật và khả năng xử lý tốt các câu hỏi về system architecture.
 
-- **3 patterns tích hợp**: Publish/Subscribe, Point-to-point, Streaming
-- **Lợi ích**: Loose coupling, scalability, resilience
-- **So sánh sync vs async**: Hiểu rõ trade-offs (sự đánh đổi)
+## Tech Meetup
 
-#### Compute Evolution
+Sau trận chung kết, chương trình tiếp tục với hai phiên chia sẻ chuyên sâu.
 
-- **Shared Responsibility Model**: Từ EC2 → ECS → Fargate → Lambda
-- **Serverless benefits**: No server management, auto-scaling, pay-for-value
-- **Functions vs Containers**: Criteria lựa chọn phù hợp
+### Securing Your Web Apps With AWS Security Agent
 
-#### Amazon Q Developer
+**Diễn giả:** Anh Thịnh Nguyễn  
+**Vai trò:** DevOps / DevSecOps / Cloud Engineer
 
-- **SDLC automation**: Từ planning đến maintenance
-- **Code transformation**: Java upgrade, .NET modernization
-- **AWS Transform agents**: VMware, Mainframe, .NET migration
+Phiên đầu tiên tập trung vào việc đưa bảo mật sâu hơn vào quá trình phát triển ứng dụng thông qua DevSecOps và Security Agent.
 
-### Những Gì Học Được
+Một nội dung đáng chú ý là việc sử dụng Agentic AI để hỗ trợ các công việc như:
 
-#### Tư Duy Thiết Kế
+- Phân tích lỗ hổng.
+- Kiểm tra vấn đề bảo mật.
+- Bảo vệ Web Application.
+- Phát hiện và xử lý các mối đe dọa trên môi trường Cloud.
 
-- **Business-first approach**: Luôn bắt đầu từ business domain, không phải technology
-- **Ubiquitous language**: Importance của common vocabulary giữa business và tech teams
-- **Bounded contexts**: Cách identify và manage complexity trong large systems
+Điểm em thấy hữu ích là cách nhìn về AI Agent không chỉ như một chatbot mà còn như một thành phần có thể tham gia vào quy trình vận hành và bảo mật hệ thống.
 
-#### Kiến Trúc Kỹ Thuật
+Đối với các ứng dụng chứa dữ liệu nhạy cảm như hệ thống quản lý tài chính cá nhân, hướng tiếp cận này có nhiều tiềm năng.
 
-- **Event storming technique**: Phương pháp thực tế để mô hình hóa quy trình kinh doanh
-- Sử dụng **Event-driven communication** thay vì synchronous calls
-- **Integration patterns**: Hiểu khi nào dùng sync, async, pub/sub, streaming
-- **Compute spectrum**: Criteria chọn từ VM → containers → serverless
+### SLA and Monitoring - From SLA to Monitoring what really matters
 
-#### Chiến Lược Hiện Đại Hóa
+**Diễn giả:** Anh Nguyễn Huỳnh Sơn
 
-- **Phased approach**: Không rush, phải có roadmap rõ ràng
-- **7Rs framework**: Nhiều con đường khác nhau tùy thuộc vào đặc điểm của mỗi ứng dụng
-- **ROI measurement**: Cost reduction + business agility
+Phiên thứ hai tập trung vào mối quan hệ giữa SLA và Monitoring.
 
-### Ứng Dụng Vào Công Việc
+SLA được trình bày không chỉ như một cam kết về dịch vụ mà còn là cơ sở để xác định những yếu tố cần được theo dõi trong quá trình vận hành.
 
-- **Áp dụng DDD** cho project hiện tại: Event storming sessions với business team
-- **Refactor microservices**: Sử dụng bounded contexts để identify service boundaries
-- **Implement event-driven patterns**: Thay thế một số sync calls bằng async messaging
-- **Serverless adoption**: Pilot AWS Lambda cho một số use cases phù hợp
-- **Try Amazon Q Developer**: Integrate vào development workflow để boost productivity
+Bốn thành phần được nhấn mạnh gồm:
 
-### Trải nghiệm trong event
+1. **Clear Expectations** – Xác định rõ kỳ vọng.
+2. **Service Accountability** – Xác định trách nhiệm đối với dịch vụ.
+3. **Risk Management** – Quản lý rủi ro.
+4. **Performance Measurement** – Đo lường hiệu năng.
 
-Tham gia workshop **“GenAI-powered App-DB Modernization”** là một trải nghiệm rất bổ ích, giúp tôi có cái nhìn toàn diện về cách hiện đại hóa ứng dụng và cơ sở dữ liệu bằng các phương pháp và công cụ hiện đại. Một số trải nghiệm nổi bật:
+Từ góc nhìn phát triển phần mềm, những tiêu chí này có thể được sử dụng để xác định yêu cầu cho Test Plan và Test Case. Một hệ thống không chỉ cần chạy đúng chức năng mà còn phải đáp ứng yêu cầu về thời gian phản hồi, khả năng chịu tải và độ ổn định.
 
-#### Học hỏi từ các diễn giả có chuyên môn cao
-- Các diễn giả đến từ AWS và các tổ chức công nghệ lớn đã chia sẻ **best practices** trong thiết kế ứng dụng hiện đại.
-- Qua các case study thực tế, tôi hiểu rõ hơn cách áp dụng **Domain-Driven Design (DDD)** và **Event-Driven Architecture** vào các project lớn.
+## Điều em rút ra sau sự kiện
 
-#### Trải nghiệm kỹ thuật thực tế
-- Tham gia các phiên trình bày về **event storming** giúp tôi hình dung cách **mô hình hóa quy trình kinh doanh** thành các domain events.
-- Học cách **phân tách microservices** và xác định **bounded contexts** để quản lý sự phức tạp của hệ thống lớn.
-- Hiểu rõ trade-offs giữa **synchronous và asynchronous communication** cũng như các pattern tích hợp như **pub/sub, point-to-point, streaming**.
+Điểm em nhận thấy rõ nhất sau sự kiện là việc xây dựng một hệ thống Cloud không kết thúc ở bước deploy.
 
-#### Ứng dụng công cụ hiện đại
-- Trực tiếp tìm hiểu về **Amazon Q Developer**, công cụ AI hỗ trợ SDLC từ lập kế hoạch đến maintenance.
-- Học cách **tự động hóa code transformation** và pilot serverless với **AWS Lambda**, từ đó nâng cao năng suất phát triển.
+Sau khi hệ thống hoạt động, cần tiếp tục quan tâm đến:
 
-#### Kết nối và trao đổi
-- Workshop tạo cơ hội trao đổi trực tiếp với các chuyên gia, đồng nghiệp và team business, giúp **nâng cao ngôn ngữ chung (ubiquitous language)** giữa business và tech.
-- Qua các ví dụ thực tế, tôi nhận ra tầm quan trọng của **business-first approach**, luôn bắt đầu từ nhu cầu kinh doanh thay vì chỉ tập trung vào công nghệ.
+- Security.
+- Monitoring.
+- SLA.
+- Performance.
+- Risk Management.
+- Incident Response.
 
-#### Bài học rút ra
-- Việc áp dụng DDD và event-driven patterns giúp giảm **coupling**, tăng **scalability** và **resilience** cho hệ thống.
-- Chiến lược hiện đại hóa cần **phased approach** và đo lường **ROI**, không nên vội vàng chuyển đổi toàn bộ hệ thống.
-- Các công cụ AI như Amazon Q Developer có thể **boost productivity** nếu được tích hợp vào workflow phát triển hiện tại.
+Đây là những vấn đề có ảnh hưởng trực tiếp đến chất lượng của một hệ thống production.
 
-#### Một số hình ảnh khi tham gia sự kiện
-* Thêm các hình ảnh của các bạn tại đây
-> Tổng thể, sự kiện không chỉ cung cấp kiến thức kỹ thuật mà còn giúp tôi thay đổi cách tư duy về thiết kế ứng dụng, hiện đại hóa hệ thống và phối hợp hiệu quả hơn giữa các team.
+## Liên hệ với Cloud Finance Platform
+
+Những kiến thức về Security Agent có thể được áp dụng cho phần trợ lý AI của **Cloud Finance Platform**.
+
+Trong khi đó, kiến thức về SLA và Monitoring giúp em có cách nhìn rõ hơn về việc theo dõi hệ thống sau khi triển khai. Đối với một ứng dụng quản lý tài chính cá nhân, những yếu tố như availability, response time và khả năng xử lý nhiều request cùng lúc đều cần được quan tâm.
+
+Sự kiện vì vậy giúp em bổ sung phần kiến thức còn thiếu giữa **system development** và **system operation**.
+
+## Hình ảnh sự kiện
+
+![Trận chung kết Cloud Architect giữa KLKAT và Ngũ Đại Hiệp](https://vvinh118.github.io/fcaj-workshop/4-eventparticipated/4.2-event2/chungket.jpg)
+
+![Đội KLKAT giành chức vô địch](https://vvinh118.github.io/fcaj-workshop/4-eventparticipated/4.2-event2/vodich.jpg)
+
+![Anh Thịnh Nguyễn trình bày về AWS Security Agent](https://vvinh118.github.io/fcaj-workshop/4-eventparticipated/4.2-event2/event2.5.jpg)
+
+![Frontier Agent và tự động hóa DevSecOps](https://vvinh118.github.io/fcaj-workshop/4-eventparticipated/4.2-event2/event2.1.jpeg)
+
+![Anh Nguyễn Huỳnh Sơn chia sẻ về SLA](https://vvinh118.github.io/fcaj-workshop/4-eventparticipated/4.2-event2/event2.4.jpg)
+
+![Ảnh chụp tập thể cuối sự kiện](https://vvinh118.github.io/fcaj-workshop/4-eventparticipated/4.2-event2/event2.3.jpeg)

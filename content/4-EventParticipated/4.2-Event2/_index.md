@@ -1,126 +1,125 @@
 ---
-title: "Event 2"
-date: 2024-01-01
-weight: 1
+title: "Event 2: Cloud Architect x Meet Up"
+date: 2026-07-11
+weight: 2
 chapter: false
 pre: " <b> 4.2. </b> "
 ---
 
-{{% notice warning %}}
-⚠️ **Note:** The information below is for reference purposes only. Please **do not copy it verbatim** into your report, including this warning.
-{{% /notice %}}
+# Event 2: Cloud Architect x Meet Up
 
-# Summary Report: “GenAI-powered App-DB Modernization workshop”
+## Event Information
 
-### Event Objectives
+- **Event:** Cloud Architect x Meet Up
+- **Date:** 11 July 2026
+- **Location:** 26th Floor, Bitexco Financial Tower, Ho Chi Minh City
+- **Role:** Participant
 
-- Share best practices in modern application design
-- Introduce Domain-Driven Design (DDD) and event-driven architecture
-- Provide guidance on selecting the right compute services
-- Present AI tools to support the development lifecycle
+The Cloud Architect x Meet Up event was held on 11 July 2026. The program combined the final round of the Cloud Architect competition with technical sessions from industry speakers.
 
-### Speakers
+The event was useful because it connected two different aspects of Cloud work: designing a system and operating it after deployment.
 
-- **Jignesh Shah** – Director, Open Source Databases
-- **Erica Liu** – Sr. GTM Specialist, AppMod
-- **Fabrianne Effendi** – Assc. Specialist SA, Serverless Amazon Web Services
+## The Cloud Architect Final
 
-### Key Highlights
+The final match featured the two strongest teams from the previous rounds: **KLKAT** and **Ngũ Đại Hiệp**.
 
-#### Identifying the drawbacks of legacy application architecture
+The final questions were more focused on architecture-level problems than the earlier rounds.
 
-- Long product release cycles → Lost revenue/missed opportunities  
-- Inefficient operations → Reduced productivity, higher costs  
-- Non-compliance with security regulations → Security breaches, loss of reputation  
+### Question Structure
 
-#### Transitioning to modern application architecture – Microservices
+| Level | Main Topics | Points |
+|---|---|---:|
+| Practitioner | Fundamental concepts and AWS Pricing | 10 |
+| Associate | HA, Auto Scaling, ELB, EC2, S3, VPC, RDS | 20 |
+| Professional | Enterprise Architecture, Migration, Multi-Account, large-scale systems | 50 |
 
-Migrating to a modular system — each function is an **independent service** communicating via **events**, built on three core pillars:
+Professional-level questions represented the largest portion of the challenge. This meant that the teams needed to reason about the overall architecture rather than simply identify individual AWS services.
 
-- **Queue Management**: Handle asynchronous tasks  
-- **Caching Strategy**: Optimize performance  
-- **Message Handling**: Flexible inter-service communication  
+### Final Ranking
 
-#### Domain-Driven Design (DDD)
+The final ranking was:
 
-- **Four-step method**: Identify domain events → arrange timeline → identify actors → define bounded contexts  
-- **Bookstore case study**: Demonstrates real-world DDD application  
-- **Context mapping**: 7 patterns for integrating bounded contexts  
+- **1st:** KLKAT
+- **2nd:** Ngũ Đại Hiệp
+- **3rd:** Young Flame IT
 
-#### Event-Driven Architecture
+KLKAT won the competition after handling the architecture problems and competition strategy effectively.
 
-- **3 integration patterns**: Publish/Subscribe, Point-to-point, Streaming  
-- **Benefits**: Loose coupling, scalability, resilience  
-- **Sync vs async comparison**: Understanding the trade-offs  
+## Technical Sessions
 
-#### Compute Evolution
+After the final match, the event continued with two technical sharing sessions.
 
-- **Shared Responsibility Model**: EC2 → ECS → Fargate → Lambda  
-- **Serverless benefits**: No server management, auto-scaling, pay-for-value  
-- **Functions vs Containers**: Criteria for appropriate choice  
+### Securing Your Web Apps With AWS Security Agent
 
-#### Amazon Q Developer
+**Speaker:** Thịnh Nguyễn  
+**Role:** DevOps / DevSecOps / Cloud Engineer
 
-- **SDLC automation**: From planning to maintenance  
-- **Code transformation**: Java upgrade, .NET modernization  
-- **AWS Transform agents**: VMware, Mainframe, .NET migration  
+The first session explored how security can be integrated into the software development process through DevSecOps and Security Agents.
 
-### Key Takeaways
+The discussion covered the use of Agentic AI to support tasks such as:
 
-#### Design Mindset
+- Vulnerability analysis.
+- Security checking.
+- Web application protection.
+- Threat detection and response in Cloud environments.
 
-- **Business-first approach**: Always start from the business domain, not the technology  
-- **Ubiquitous language**: Importance of a shared vocabulary between business and tech teams  
-- **Bounded contexts**: Identifying and managing complexity in large systems  
+One of the most interesting ideas for me was that AI Agents can become part of a security workflow instead of being used only as conversational tools.
 
-#### Technical Architecture
+This approach can be especially relevant for applications that handle sensitive information, such as personal finance systems.
 
-- **Event storming technique**: Practical method for modeling business processes  
-- Use **event-driven communication** instead of synchronous calls  
-- **Integration patterns**: When to use sync, async, pub/sub, streaming  
-- **Compute spectrum**: Criteria for choosing between VM, containers, and serverless  
+### SLA and Monitoring - From SLA to Monitoring what really matters
 
-#### Modernization Strategy
+**Speaker:** Nguyễn Huỳnh Sơn
 
-- **Phased approach**: No rushing — follow a clear roadmap  
-- **7Rs framework**: Multiple modernization paths depending on the application  
-- **ROI measurement**: Cost reduction + business agility  
+The second session focused on the relationship between SLA and monitoring.
 
-### Applying to Work
+SLA was presented as more than a formal service commitment. It can also provide a practical basis for deciding what should be monitored and measured during system operation.
 
-- **Apply DDD** to current projects: Event storming sessions with business teams  
-- **Refactor microservices**: Use bounded contexts to define service boundaries  
-- **Implement event-driven patterns**: Replace some sync calls with async messaging  
-- **Adopt serverless**: Pilot AWS Lambda for suitable use cases  
-- **Try Amazon Q Developer**: Integrate into the dev workflow to boost productivity  
+Four important areas were highlighted:
 
-### Event Experience
+1. **Clear Expectations**
+2. **Service Accountability**
+3. **Risk Management**
+4. **Performance Measurement**
 
-Attending the **“GenAI-powered App-DB Modernization”** workshop was extremely valuable, giving me a comprehensive view of modernizing applications and databases using advanced methods and tools. Key experiences included:
+These concepts can also influence software testing. A system should not only pass functional tests but also satisfy requirements related to response time, load capacity, reliability, and overall performance.
 
-#### Learning from highly skilled speakers
-- Experts from AWS and major tech organizations shared **best practices** in modern application design.  
-- Through real-world case studies, I gained a deeper understanding of applying **DDD** and **Event-Driven Architecture** to large projects.  
+## What I Took Away
 
-#### Hands-on technical exposure
-- Participating in **event storming** sessions helped me visualize how to **model business processes** into domain events.  
-- Learned how to **split microservices** and define **bounded contexts** to manage large-system complexity.  
-- Understood trade-offs between **synchronous and asynchronous communication** and integration patterns like **pub/sub, point-to-point, streaming**.  
+The most useful lesson from this event was that deploying a system is not the end of the development process.
 
-#### Leveraging modern tools
-- Explored **Amazon Q Developer**, an AI tool for SDLC support from planning to maintenance.  
-- Learned to **automate code transformation** and pilot serverless with **AWS Lambda** to improve productivity.  
+A production system also needs continuous attention to:
 
-#### Networking and discussions
-- The workshop offered opportunities to exchange ideas with experts, peers, and business teams, enhancing the **ubiquitous language** between business and tech.  
-- Real-world examples reinforced the importance of the **business-first approach** rather than focusing solely on technology.  
+- Security.
+- Monitoring.
+- SLA.
+- Performance.
+- Risk management.
+- Incident response.
 
-#### Lessons learned
-- Applying DDD and event-driven patterns reduces **coupling** while improving **scalability** and **resilience**.  
-- Modernization requires a **phased approach** with **ROI measurement**; rushing the process can be risky.  
-- AI tools like Amazon Q Developer can significantly **boost productivity** when integrated into the current workflow.  
+These areas have a direct impact on how reliable a Cloud application is in real-world use.
 
-#### Some event photos
-*Add your event photos here*  
+## Application to the Cloud Finance Platform
 
-> Overall, the event not only provided technical knowledge but also helped me reshape my thinking about application design, system modernization, and cross-team collaboration.
+The Security Agent session provided ideas that can be considered for the AI assistant component of the **Cloud Finance Platform**.
+
+The SLA and Monitoring session was also useful for thinking about the system after deployment. For a personal finance application, availability, response time, and the ability to handle multiple requests are important requirements.
+
+Overall, the event helped me connect the development side of a Cloud application with the operational side of running it in production.
+
+## Event Photos
+
+![Cloud Architect final between KLKAT and Ngũ Đại Hiệp](https://vvinh118.github.io/fcaj-workshop/4-eventparticipated/4.2-event2/chungket.jpg)
+
+
+![KLKAT winning the competition](https://vvinh118.github.io/fcaj-workshop/4-eventparticipated/4.2-event2/vodich.jpg)
+
+![Thịnh Nguyễn presenting AWS Security Agent](https://vvinh118.github.io/fcaj-workshop/4-eventparticipated/4.2-event2/event2.5.jpg)
+
+
+![Frontier Agent and DevSecOps automation](https://vvinh118.github.io/fcaj-workshop/4-eventparticipated/4.2-event2/event2.1.jpeg)
+
+![Nguyễn Huỳnh Sơn presenting SLA concepts](https://vvinh118.github.io/fcaj-workshop/4-eventparticipated/4.2-event2/event2.4.jpg)
+
+
+![Group photo at the end of the event](https://vvinh118.github.io/fcaj-workshop/4-eventparticipated/4.2-event2/event2.3.jpeg)

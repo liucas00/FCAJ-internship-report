@@ -1,126 +1,165 @@
 ---
-title: "Event 1"
-date: 2024-01-01
+title: "Event 1: Cloud Architect"
+date: 2026-06-20
 weight: 1
 chapter: false
 pre: " <b> 4.1. </b> "
 ---
 
-{{% notice warning %}}
-⚠️ **Note:** The information below is for reference purposes only. Please **do not copy it verbatim** into your report, including this warning.
-{{% /notice %}}
+# Event 1: Cloud Architect
 
-# Summary Report: “GenAI-powered App-DB Modernization workshop”
+## Event Details
 
-### Event Objectives
+- **Event:** Cloud Architect
+- **Date:** 20 June 2026
+- **Location:** 26th Floor, Bitexco Financial Tower, 02 Hai Trieu Street, Ho Chi Minh City
+- **Format:** Team competition
+- **Role:** Competitor
+- **Team:** Gặp phải thằng liều
 
-- Share best practices in modern application design
-- Introduce Domain-Driven Design (DDD) and event-driven architecture
-- Provide guidance on selecting the right compute services
-- Present AI tools to support the development lifecycle
+The Cloud Architect competition gave me an opportunity to test my AWS knowledge in a competitive environment. Instead of simply answering theoretical questions, participants had to analyze technical situations and select the most appropriate architecture.
 
-### Speakers
+## Competition Format
 
-- **Jignesh Shah** – Director, Open Source Databases
-- **Erica Liu** – Sr. GTM Specialist, AppMod
-- **Fabrianne Effendi** – Assc. Specialist SA, Serverless Amazon Web Services
+There were **8 teams**, with **5 members per team**. I competed as part of team number 7, **Gặp phải thằng liều**.
 
-### Key Highlights
+The quarter-final matchups were:
 
-#### Identifying the drawbacks of legacy application architecture
+| Match | Teams |
+|---|---|
+| 1 | KLKAT vs PrimeOps |
+| 2 | Team newbie vs Young Flame IT |
+| 3 | Loser vs Ngũ Đại Hiệp |
+| 4 | Gặp phải thằng liều vs Lifelong Learners |
 
-- Long product release cycles → Lost revenue/missed opportunities  
-- Inefficient operations → Reduced productivity, higher costs  
-- Non-compliance with security regulations → Security breaches, loss of reputation  
+The format required teams to discuss and agree on an answer within a limited amount of time.
 
-#### Transitioning to modern application architecture – Microservices
+## Question Levels
 
-Migrating to a modular system — each function is an **independent service** communicating via **events**, built on three core pillars:
+The questions were divided into three levels.
 
-- **Queue Management**: Handle asynchronous tasks  
-- **Caching Strategy**: Optimize performance  
-- **Message Handling**: Flexible inter-service communication  
+### Practitioner
 
-#### Domain-Driven Design (DDD)
+Practitioner questions focused on fundamental AWS knowledge, including:
 
-- **Four-step method**: Identify domain events → arrange timeline → identify actors → define bounded contexts  
-- **Bookstore case study**: Demonstrates real-world DDD application  
-- **Context mapping**: 7 patterns for integrating bounded contexts  
+- Basic Cloud concepts.
+- AWS Global Infrastructure.
+- IAM and security fundamentals.
+- AWS Pricing.
+- AWS Well-Architected Framework.
 
-#### Event-Driven Architecture
+Each question was worth **10 points**.
 
-- **3 integration patterns**: Publish/Subscribe, Point-to-point, Streaming  
-- **Benefits**: Loose coupling, scalability, resilience  
-- **Sync vs async comparison**: Understanding the trade-offs  
+### Associate
 
-#### Compute Evolution
+Associate questions required a deeper understanding of common AWS services and architecture patterns, including:
 
-- **Shared Responsibility Model**: EC2 → ECS → Fargate → Lambda  
-- **Serverless benefits**: No server management, auto-scaling, pay-for-value  
-- **Functions vs Containers**: Criteria for appropriate choice  
+- Amazon EC2.
+- Amazon S3.
+- Amazon VPC.
+- Amazon RDS.
+- Load Balancing.
+- Auto Scaling.
+- High Availability.
+- Disaster Recovery.
 
-#### Amazon Q Developer
+Each question was worth **20 points**.
 
-- **SDLC automation**: From planning to maintenance  
-- **Code transformation**: Java upgrade, .NET modernization  
-- **AWS Transform agents**: VMware, Mainframe, .NET migration  
+### Professional
 
-### Key Takeaways
+Professional questions were the most difficult and were worth **50 points each**.
 
-#### Design Mindset
+The topics included:
 
-- **Business-first approach**: Always start from the business domain, not the technology  
-- **Ubiquitous language**: Importance of a shared vocabulary between business and tech teams  
-- **Bounded contexts**: Identifying and managing complexity in large systems  
+- Enterprise Architecture.
+- Multi-Account Architecture.
+- Hybrid Cloud.
+- Migration Strategy.
+- Large-scale security.
+- Cost optimization.
 
-#### Technical Architecture
+These questions required a broader system-level perspective rather than knowledge of individual AWS services.
 
-- **Event storming technique**: Practical method for modeling business processes  
-- Use **event-driven communication** instead of synchronous calls  
-- **Integration patterns**: When to use sync, async, pub/sub, streaming  
-- **Compute spectrum**: Criteria for choosing between VM, containers, and serverless  
+## Special Abilities
 
-#### Modernization Strategy
+Each team received two abilities that could be used once per match.
 
-- **Phased approach**: No rushing — follow a clear roadmap  
-- **7Rs framework**: Multiple modernization paths depending on the application  
-- **ROI measurement**: Cost reduction + business agility  
+### Minimal Risk
 
-### Applying to Work
+This ability was useful when the team was uncertain about an answer. A wrong answer would not result in a score deduction, while a correct answer would receive only half of the normal score.
 
-- **Apply DDD** to current projects: Event storming sessions with business teams  
-- **Refactor microservices**: Use bounded contexts to define service boundaries  
-- **Implement event-driven patterns**: Replace some sync calls with async messaging  
-- **Adopt serverless**: Pilot AWS Lambda for suitable use cases  
-- **Try Amazon Q Developer**: Integrate into the dev workflow to boost productivity  
+### Star of Hope
 
-### Event Experience
+This ability was designed for questions where the team had high confidence. A correct answer doubled the score, while an incorrect answer resulted in double the normal deduction.
 
-Attending the **“GenAI-powered App-DB Modernization”** workshop was extremely valuable, giving me a comprehensive view of modernizing applications and databases using advanced methods and tools. Key experiences included:
+Because each ability could only be used once, deciding when to use them became part of the strategy.
 
-#### Learning from highly skilled speakers
-- Experts from AWS and major tech organizations shared **best practices** in modern application design.  
-- Through real-world case studies, I gained a deeper understanding of applying **DDD** and **Event-Driven Architecture** to large projects.  
+## How We Approached the Questions
 
-#### Hands-on technical exposure
-- Participating in **event storming** sessions helped me visualize how to **model business processes** into domain events.  
-- Learned how to **split microservices** and define **bounded contexts** to manage large-system complexity.  
-- Understood trade-offs between **synchronous and asynchronous communication** and integration patterns like **pub/sub, point-to-point, streaming**.  
+During the competition, my teammates and I had to communicate quickly and reach a decision before the answer time expired.
 
-#### Leveraging modern tools
-- Explored **Amazon Q Developer**, an AI tool for SDLC support from planning to maintenance.  
-- Learned to **automate code transformation** and pilot serverless with **AWS Lambda** to improve productivity.  
+Our general approach was:
 
-#### Networking and discussions
-- The workshop offered opportunities to exchange ideas with experts, peers, and business teams, enhancing the **ubiquitous language** between business and tech.  
-- Real-world examples reinforced the importance of the **business-first approach** rather than focusing solely on technology.  
+1. Identify the main AWS service or architecture concept.
+2. Extract the requirements and constraints.
+3. Eliminate technically unsuitable options.
+4. Compare the remaining solutions based on performance, security, availability, and cost.
+5. Decide whether a special ability should be used.
+6. Confirm the final answer.
 
-#### Lessons learned
-- Applying DDD and event-driven patterns reduces **coupling** while improving **scalability** and **resilience**.  
-- Modernization requires a **phased approach** with **ROI measurement**; rushing the process can be risky.  
-- AI tools like Amazon Q Developer can significantly **boost productivity** when integrated into the current workflow.  
+The biggest challenge was not remembering service names. It was explaining why one solution was more suitable than another for the specific requirements.
 
-#### Some event photos
-*Add your event photos here*  
+## Competition Result
 
-> Overall, the event not only provided technical knowledge but also helped me reshape my thinking about application design, system modernization, and cross-team collaboration.
+The two teams that reached the final were **KLKAT** and **Ngũ Đại Hiệp**. **Young Flame IT** finished in third place.
+
+Although my team did not reach the final, the competition was still valuable. I was able to identify gaps in my AWS knowledge and learn from the approaches used by other teams.
+
+## What I Learned
+
+### Technical Knowledge
+
+The competition strengthened my understanding of:
+
+- AWS Regions and Availability Zones.
+- EC2, S3, VPC, and RDS.
+- Load Balancing and Auto Scaling.
+- High Availability.
+- Cloud security.
+- Cost optimization.
+- System design.
+
+### Practical Skills
+
+I also improved several skills that are difficult to develop through individual study:
+
+- Communicating technical ideas quickly.
+- Supporting an argument with technical reasoning.
+- Making decisions under time pressure.
+- Evaluating technical risks.
+- Working effectively as part of a team.
+
+## Connection to the Cloud Finance Platform
+
+The knowledge from this competition was directly useful while working on the **Cloud Finance Platform - Personal Finance Management System**.
+
+The architecture exercises helped me think more clearly about separating the Public, Application, and Database layers inside a VPC.
+
+For security, I gained a better understanding of how Security Groups can control traffic between services and how the **Least Privilege** principle should be applied when defining IAM Policies.
+
+The competition also gave me more confidence when choosing services such as:
+
+- **Amazon ECS** for compute workloads.
+- **Amazon RDS** for the database layer.
+- **Amazon S3** for static storage.
+- Load Balancing and Auto Scaling for improved availability.
+
+The main value of this event was being able to connect AWS concepts with actual architecture decisions instead of treating each service as an isolated topic.
+
+## Event Photos
+
+![Cloud Architect competition bracket](https://vvinh118.github.io/fcaj-workshop/4-eventparticipated/4.1-event1/Sodothidau.jpg)
+
+![Gặp phải thằng liều during the competition](https://vvinh118.github.io/fcaj-workshop/4-eventparticipated/4.1-event1/thidau.JPG)
+
+![Group photo at the end of the event](https://vvinh118.github.io/fcaj-workshop/4-eventparticipated/4.1-event1/event1.JPG)
