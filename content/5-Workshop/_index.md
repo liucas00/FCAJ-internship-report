@@ -1,41 +1,45 @@
 ---
-title: "Workshop"
-date: 2026-07-29
-weight: 5
-chapter: false
-pre: " <b> 5. </b> "
+title: "Clean Up Resources"
+weight: 8
+chapter : false
+pre : " <b> 5.8. </b> "
 ---
 
-# Cloud Deployment for Finance Platform: Automated CI/CD and Secure Storage on AWS
+### Purpose
 
-#### Overview
+Once you have completed the workshop, deleting the resources you provisioned is a crucial step to avoid any unexpected charges on your AWS bill. The general rule of thumb for cleanup is to tear down the infrastructure in the reverse order of how it was built.
 
-**Amazon Web Services (AWS)** provides a robust and highly scalable toolset, making it the ideal infrastructure to transition the **Cloud Finance Platform** project from a development environment to production.
+---
 
-In this workshop, we will practice integrating our existing Backend-as-a-Service architecture with AWS infrastructure. The core objective is to establish a zero-touch automated deployment pipeline (CI/CD) for the Web Dashboard (ReactJS), while simultaneously building an independent, highly secure storage system on AWS to manage sensitive files (e.g., user transaction receipts and invoices).
+### 1. Cleaning up the Frontend (CloudFront & S3)
 
-We will focus on the in-depth setup and configuration of two core services:
+- **CloudFront:** Navigate to the CloudFront console and select your newly created distribution. First, you must click **Disable** (this propagation takes a few minutes). Once the status completely changes to disabled, you can safely select it again and hit **Delete**.
+- **S3 Bucket:** Move over to the S3 service. Keep in mind that AWS prevents you from deleting a bucket that still contains objects. Therefore, select your `cloud-finance-frontend-<account-id>` bucket, click **Empty** to clear all static files, and then click **Delete** to remove the bucket itself.
 
-+ **AWS Amplify (CI/CD & Hosting):** Establish an automated pipeline that detects source code changes from the repository (GitHub/GitLab) to build and deploy the Web Dashboard. This process includes configuring secure Environment Variables to connect with the Supabase database, setting up Redirect/Rewrite rules for the Single Page Application (SPA), and associating a Custom Domain with a free SSL/TLS certificate.
-+ **Amazon S3 (Static & Document Storage):** Build an Object Storage system to complement the current infrastructure. We will create dedicated Private Buckets designed specifically for storing transaction receipt images. This section dives deep into configuring CORS (Cross-Origin Resource Sharing) to allow Direct Uploads from the Client (Web/Mobile) via Pre-signed URLs, and enforcing strict IAM/Bucket Policies to block all public access, ensuring absolute security for user financial data.
+### 2. Tearing down the Compute Layer (ECS & ALB)
 
-#### Workshop Contents
+- **Amazon ECS:**
+  - Head over to your `cloud-finance-cluster`.
+  - Select the running Service and update the 'Desired tasks' value down to `0`.
+  - Wait for the active tasks to stop entirely, delete the Service, and finally delete the Cluster.
+- **Load Balancer (ALB):**
+  - Open the EC2 Dashboard, go to the Load Balancers section, select `cloud-finance-alb`, and click **Delete**.
+  - Scroll down to Target Groups on the left pane, select your `tg-gateway` group, and delete it.
 
-1. [Overview of AWS Deployment Architecture for the Finance Platform](5.1-Architecture-overview/)
-   - Integration Architecture Map: Client (Flutter/React) - AWS Amplify - S3 - Supabase.
-2. [Environment Prerequisites and Access Security](5.2-Prerequisites/)
-   - Initializing IAM User/Role with Least Privilege permissions.
-   - Preparing the GitHub Repository and Environment Variables (Supabase URL, API Keys).
-3. [Lab 1: Deploying the Web Dashboard with AWS Amplify](5.3-Deploy-Amplify/)
-   - Connecting the `main` branch to the Amplify Console.
-   - Configuring Build settings (`amplify.yml`) for the ReactJS/TypeScript project.
-   - Handling 404 errors for SPA using Rewrite Rules.
-4. [Lab 2: Configuring Amazon S3 for the Transaction Receipt System](5.4-S3-Storage/)
-   - Creating a Private Bucket with default Server-Side Encryption.
-   - Enforcing Block Public Access.
-5. [Lab 3: CORS Configuration and Upload API Integration](5.5-CORS-Integration/)
-   - Configuring the CORS JSON file to grant access to the Amplify domain.
-   - Implementing the upload/download flow via Pre-signed URLs connected to the Client.
-6. [Integration Testing and Resource Cleanup](5.6-Testing-Cleanup/)
-   - End-to-End Testing: Adding a new transaction with an attached receipt image.
-   - Teardown instructions to prevent incurring unexpected AWS charges.
+### 3. Deleting Docker Images (ECR)
+
+- Access the **Elastic Container Registry (ECR)** console.
+- Select your backend project's repository. Similar to the S3 logic, you must manually delete all the images stored inside first before you are allowed to delete the registry folder itself.
+
+### 4. Removing Database & Secrets
+
+- **Amazon RDS:** Go to RDS > Databases. Select your database instance and click **Delete**. Be sure to uncheck the "Create final snapshot" option (unless you intend to pay for backup storage), acknowledge the prompt, and confirm the deletion.
+- **Secrets Manager:** Locate the secret storing your DB credentials and select **Delete secret**. (AWS enforces a waiting period before permanent deletion; you can schedule it for the minimum of 7 days).
+
+### 5. Deleting Networking Infrastructure (VPC)
+
+The final step sweeps away the underlying network foundation:
+- Head to the **VPC Dashboard** > **Your VPCs**.
+- Select `cloud-finance-vpc` and click **Actions** > **Delete VPC**. This action is highly convenient as it automatically detects and removes all associated dependencies, including Subnets, the Internet Gateway, Route Tables, and Security Groups.
+
+![Cleanup Resources](https://vvinh118.github.io/fcaj-workshop/5-workshop/5.8-cleanup/cleanup.png)

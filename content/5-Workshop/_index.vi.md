@@ -1,41 +1,44 @@
 ---
-title: "Workshop"
-date: 2026-07-29
-weight: 5
-chapter: false
-pre: " <b> 5. </b> "
+title: "Dọn dẹp tài nguyên"
+weight: 8
+chapter : false
+pre : " <b> 5.8. </b> "
 ---
 
-# Triển khai Nền tảng Tài chính lên Đám mây: Tự động hóa CI/CD và Lưu trữ An toàn trên AWS
+### Mục đích
 
-#### Tổng quan
+Sau khi hoàn thành bài thực hành, việc xóa bỏ toàn bộ các tài nguyên đã tạo là một bước cực kỳ quan trọng để đảm bảo tài khoản AWS của bạn không bị trừ tiền ngoài ý muốn. Nguyên tắc dọn dẹp thường sẽ đi ngược lại với trình tự lúc bạn khởi tạo hệ thống.
 
-**Amazon Web Services (AWS)** cung cấp bộ công cụ mạnh mẽ và khả năng mở rộng linh hoạt, là hạ tầng lý tưởng để đưa dự án **Cloud Finance Platform** từ môi trường phát triển (development) lên môi trường thực tế (production). 
+---
 
-Trong bài lab/workshop này, chúng ta sẽ thực hành cách tích hợp kiến trúc Backend-as-a-Service (đang sử dụng) với hạ tầng AWS. Mục tiêu cốt lõi là thiết lập luồng triển khai tự động hóa không chạm (CI/CD) cho giao diện Web Dashboard (ReactJS), đồng thời xây dựng một hệ thống lưu trữ độc lập, bảo mật cao cấp trên AWS để quản lý các tệp nhạy cảm (như hóa đơn, chứng từ giao dịch của người dùng).
+### 1. Dọn dẹp Frontend (CloudFront & S3)
 
-Chúng ta sẽ tập trung thiết lập và cấu hình chuyên sâu hai dịch vụ cốt lõi:
+- **CloudFront:** Truy cập vào giao diện quản lý CloudFront và chọn Distribution bạn đã tạo. Đầu tiên, hãy nhấn **Disable** (quá trình vô hiệu hóa sẽ mất vài phút). Sau khi trạng thái đã chuyển sang disabled, bạn mới có thể nhấn **Delete** để xóa hoàn toàn.
+- **S3 Bucket:** Tiếp tục qua dịch vụ S3. Bạn cần lưu ý là AWS không cho phép xóa bucket nếu bên trong vẫn còn chứa file. Do đó, hãy chọn bucket `cloud-finance-frontend-<account-id>`, click **Empty** để dọn sạch toàn bộ mã nguồn frontend, sau đó mới nhấn **Delete** để xóa bucket.
 
-+ **AWS Amplify (CI/CD & Hosting):** Thiết lập pipeline tự động nhận diện thay đổi mã nguồn từ kho lưu trữ (GitHub/GitLab) để build và deploy Web Dashboard. Quá trình này bao gồm việc cấu hình các biến môi trường an toàn (Environment Variables) để kết nối với cơ sở dữ liệu Supabase, thiết lập rules định tuyến lại (Redirect/Rewrite rules) cho ứng dụng Single Page Application (SPA), và liên kết tên miền tùy chỉnh (Custom Domain) với chứng chỉ SSL/TLS miễn phí.
-+ **Amazon S3 (Lưu trữ Dữ liệu Tĩnh & Chứng từ):** Xây dựng hệ thống lưu trữ Object Storage thay thế hoặc bổ trợ cho hệ thống hiện tại. Chúng ta sẽ tạo các Private Buckets được thiết kế riêng để lưu trữ ảnh chụp hóa đơn giao dịch. Phần này đi sâu vào việc cấu hình CORS (Cross-Origin Resource Sharing) cho phép Client (Web/Mobile) upload trực tiếp thông qua Pre-signed URLs, và thiết lập IAM Policies/Bucket Policies nghiêm ngặt để chặn mọi truy cập ẩn danh (public access), đảm bảo an toàn tuyệt đối cho dữ liệu tài chính của người dùng.
+### 2. Gỡ bỏ tầng Compute (ECS & ALB)
 
-#### Nội dung chi tiết Workshop
+- **Amazon ECS:** 
+  - Đi đến cluster `cloud-finance-cluster`.
+  - Chọn Service đang chạy, cập nhật số lượng task (Desired tasks) về mức `0`.
+  - Chờ một lát để các task dừng hẳn, tiến hành xóa Service, và cuối cùng là xóa luôn Cluster.
+- **Load Balancer (ALB):** 
+  - Mở EC2 Dashboard, tìm mục Load Balancers, tick chọn `cloud-finance-alb` và bấm **Delete**.
+  - Cuộn xuống phần Target Groups, chọn nhóm `tg-gateway` và thực hiện xóa.
 
-1. [Tổng quan Kiến trúc Triển khai AWS cho Nền tảng Tài chính](5.1-Architecture-overview/)
-   - Bản đồ kiến trúc tích hợp: Client (Flutter/React) - AWS Amplify - S3 - Supabase.
-2. [Chuẩn bị Môi trường và Bảo mật Phân quyền](5.2-Prerequisites/)
-   - Khởi tạo IAM User/Role với quyền hạn tối thiểu (Least Privilege).
-   - Chuẩn bị GitHub Repository và bộ biến môi trường (Supabase URL, API Keys).
-3. [Lab 1: Triển khai Web Dashboard với AWS Amplify](5.3-Deploy-Amplify/)
-   - Kết nối nhánh `main` với Amplify Console.
-   - Cấu hình Build settings (`amplify.yml`) cho dự án ReactJS/TypeScript.
-   - Xử lý lỗi 404 cho SPA bằng Rewrite Rules.
-4. [Lab 2: Thiết lập Amazon S3 cho Hệ thống Chứng từ Giao dịch](5.4-S3-Storage/)
-   - Tạo Private Bucket với mã hóa mặc định (Server-Side Encryption).
-   - Thiết lập Block Public Access.
-5. [Lab 3: Cấu hình CORS và Tích hợp API Upload](5.5-CORS-Integration/)
-   - Cấu hình tệp JSON CORS để cấp quyền cho domain của Amplify.
-   - Triển khai luồng upload/download bằng cơ chế Pre-signed URL kết nối với Client.
-6. [Kiểm thử Tích hợp và Dọn dẹp Tài nguyên](5.6-Testing-Cleanup/)
-   - Kiểm thử luồng End-to-End: Thêm giao dịch mới đính kèm ảnh hóa đơn.
-   - Hướng dẫn xóa tài nguyên (Teardown) để tránh phát sinh chi phí.
+### 3. Xóa Docker Image (ECR)
+
+- Quay trở lại dịch vụ **Elastic Container Registry (ECR)**.
+- Chọn repository chứa image của backend. Tương tự như S3, bạn cần tick chọn để xóa hết các image nằm bên trong trước, sau đó mới có quyền xóa toàn bộ repository.
+
+### 4. Dọn dẹp tầng Database & Secrets
+
+- **Amazon RDS:** Vào giao diện quản lý RDS > Databases. Tick chọn instance đã tạo, nhấn **Delete**. Đừng quên bỏ tick tùy chọn "Create final snapshot" (trừ khi bạn muốn tốn phí lưu trữ bản backup) và xác nhận xóa.
+- **Secrets Manager:** Tìm đến secret lưu thông tin cấu hình database, chọn **Delete secret**. (AWS thường yêu cầu một khoảng thời gian chờ để xóa vĩnh viễn, bạn có thể thiết lập mức tối thiểu là 7 ngày).
+
+### 5. Xóa hạ tầng mạng (VPC)
+
+Bước cuối cùng này sẽ dọn sạch tận gốc các cấu hình mạng:
+- Truy cập vào **VPC Dashboard** > **Your VPCs**.
+- Chọn `cloud-finance-vpc`, nhấn **Actions** > **Delete VPC**. Thao tác này rất tiện vì nó sẽ tự động phát hiện và dọn sạch các thành phần đi kèm bên trong như Subnets, Internet Gateway, Route Tables và Security Groups.
+

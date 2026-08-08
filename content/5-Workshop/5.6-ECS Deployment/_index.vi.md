@@ -1,6 +1,8 @@
 ---
 title: "Vận hành trên ECS Fargate & ALB"
 weight: 6
+chapter : false
+pre : " <b> 5.6. </b> "
 ---
 
 ### Mục tiêu chính

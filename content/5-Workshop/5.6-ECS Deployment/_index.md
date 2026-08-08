@@ -1,6 +1,8 @@
 ---
 title: "Deploying on ECS Fargate & ALB"
 weight: 6
+chapter : false
+pre : " <b> 5.6. </b> "
 ---
 
 ### Core Objective
