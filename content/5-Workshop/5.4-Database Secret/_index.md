@@ -1,47 +1,49 @@
 ---
-title: "Building Network and Security Infrastructure"
-date: 2026-07-30
-weight: 3
-chapter: true
-pre: "<b> 5.3. </b>"
+title: "Database Tier & Security Configuration"
+weight: 4
 ---
 
-### Network Architecture Goals
+### Core Objective
 
-To ensure the security of the application and databases, I prepare a well-isolated Virtual Private Cloud (VPC) with clear network boundaries. 
+In this section, we will provision a relational database (Amazon RDS) safely isolated within a private network. Additionally, to avoid exposing sensitive credentials (like passwords and connection strings), all access configurations will be securely encrypted and centrally managed using AWS Secrets Manager.
 
-The strategy is to divide the network into two distinct layers:
+---
 
-*   **Public Subnet**: The internet-facing zone. I place the Load Balancer here to handle incoming external traffic.
-*   **Private Subnet**: A highly secure, isolated zone with no direct internet access. All application containers and databases reside here.
+### 1. Provisioning the Database with Amazon RDS
 
-### Provisioning the VPC
+Instead of manually installing and maintaining a database on an EC2 instance, we will leverage Amazon RDS to offload the administrative overhead:
 
-I set up the base network using the automated configuration tool in AWS. The steps are as follows:
+- Navigate to the **Amazon RDS** service from the AWS Console.
+- First, create a **Subnet group** to define exactly where your database will reside. Select the `cloud-finance-vpc` and specify the **Private Subnets** (this ensures the database is completely shielded from direct internet access).
+- Go to the **Databases** section on the left navigation pane and click on **Create database**.
+- Select your preferred database engine (e.g., MySQL or PostgreSQL) and choose the Free tier template if you are using a practice account to minimize costs.
+- Provide a DB instance identifier (such as `cloud-finance-db`), then configure your Master username and password.
+- Under the **Connectivity** section, double-check that **Public access** is strictly set to `No`. Attach the appropriate Security Group to allow inbound connections exclusively from your ECS backend services.
 
-1. Log in to the AWS Management Console and navigate to the **VPC** service.
-2. From the **VPC Dashboard**, click **Create VPC**.
-3. Select the **VPC and more** option so AWS handles the routing tables and subnets automatically.
-4. Configure the following network parameters:
-    *   **Name tag auto-generation**: `cloud-finance-vpc`
-    *   **IPv4 CIDR block**: `10.0.0.0/16`
-    *   **Tenancy**: `Default`
-    *   **Number of Availability Zones (AZs)**: `2` (selecting zones like `ap-southeast-1a` and `ap-southeast-1b` for redundancy).
-    *   **Number of public subnets**: `2`
-    *   **Number of private subnets**: `4` (allocating 2 for ECS workloads and 2 for Databases).
-    *   **NAT gateways**: Select `1 NAT gateway` (kept in a Single AZ to optimize costs).
-    *   **VPC endpoints**: None.
-5. Click **Create VPC** and wait for the infrastructure to be provisioned.
+![RDS Setup](https://vvinh118.github.io/fcaj-workshop/5-workshop/5.4-database-secret/rds-postgres.png)
 
-![VPC Creation Process](https://vvinh118.github.io/fcaj-workshop/5-workshop/5.3-networking/vpc-created.png)
+### 2. Accelerating Performance with Amazon ElastiCache for Redis
 
-### Configuring Security Groups
+To reduce the query load on our primary database and speed up API response times, we will deploy a Redis caching layer:
 
-Next, I define 4 specific Security Groups. By applying the principle of least privilege, I ensure that resources can only communicate with authorized components.
+- Open the **Amazon ElastiCache** console.
+- Just like with RDS, start by creating a **Subnet group**. Select your `cloud-finance-vpc` and assign the Private Subnets so the Redis cluster operates securely inside your internal network.
+- Next, click on **Create Redis cluster**.
+- Give your cluster a recognizable name (e.g., `cloud-finance-redis`).
+- For the Node type (hardware configuration), select a smaller, cost-effective instance like `cache.t2.micro` or `cache.t3.micro` for this lab environment.
+- In the **Security** section, attach the proper Security Group to allow your ECS containers to read and write data to the Redis cluster.
 
-*   **`alb-sg` (For Load Balancer):** Allows inbound traffic from anywhere (`0.0.0.0/0`) on port `80` (HTTP) and port `443` (HTTPS).
-*   **`ecs-sg` (For Microservices):** Restricts inbound traffic to port `8000`, accepting requests only from the `alb-sg`. Internal communication among services within this group is permitted.
-*   **`rds-sg` (For PostgreSQL):** Allows inbound connections on port `5432` strictly from `ecs-sg`. This database is completely inaccessible from the public internet.
-*   **`redis-sg` (For ElastiCache Redis):** Similar to the RDS instance, opens port `6379` only to incoming traffic from `ecs-sg`, serving the Notification Worker.
+![ElastiCache Redis Setup](https://vvinh118.github.io/fcaj-workshop/5-workshop/5.4-database-secret/elasticache-redis.png)
 
-![Security Groups Configuration](https://vvinh118.github.io/fcaj-workshop/5-workshop/5.3-networking/security-groups.png)
+### 3. Managing Credentials with AWS Secrets Manager
+
+Hardcoding database passwords into your application source code poses a severe security risk. AWS Secrets Manager provides an elegant solution for this:
+
+- Head over to the **AWS Secrets Manager** console and click **Store a new secret**.
+- For the secret type, select **Credentials for Amazon RDS database**.
+- Input the exact Master username and password that you configured during the RDS creation step.
+- Scroll down to the database section and select your `cloud-finance-db` instance to link them together.
+- Proceed to the next step and assign a logical name to your secret (for example, `cloud-finance/db-credentials`).
+- Complete the remaining prompts to store the secret. Later on, when deploying your ECS tasks, the containers will automatically fetch these credentials at runtime without exposing any plain-text passwords.
+
+![Secrets Manager Configuration](https://vvinh118.github.io/fcaj-workshop/5-workshop/5.4-database-secret/secrets-manager.png)
