@@ -1,34 +1,35 @@
 ---
-title : "Tạo Amazon ECR và đẩy Docker Images"
+title : "Đóng gói và Đẩy Docker Image lên ECR"
 date : 2026-07-31
 weight : 5
 chapter : false
 pre : " <b> 5.5. </b> "
 ---
 
-#### Tạo Amazon Elastic Container Registry
+### Thiết lập không gian lưu trữ với Amazon ECR
 
-Đầu tiên, mình tạo các repositories trên Amazon ECR để lưu trữ Docker Images cho từng microservice.
+Để chuẩn bị cho việc chạy ứng dụng trên ECS Fargate, tôi cần một không gian an toàn để quản lý các bản build của hệ thống. Dựa theo kiến trúc chia nhỏ, tôi tiến hành tạo 9 repositories riêng biệt trên Amazon Elastic Container Registry (ECR) tương ứng với từng dịch vụ backend.
 
-Các repositories được tạo gồm:
+Danh sách các kho lưu trữ tôi đã khởi tạo bao gồm:
+* `cloud-finance/gateway`
+* `cloud-finance/auth`
+* `cloud-finance/finance`
+* `cloud-finance/ai-agent`
+* `cloud-finance/notification-api`
+* `cloud-finance/notification-worker`
+* `cloud-finance/planning`
+* `cloud-finance/recurring`
+* `cloud-finance/ocr`
 
-+ `cloud-finance/gateway`
-+ `cloud-finance/auth`
-+ `cloud-finance/finance`
-+ `cloud-finance/ai-agent`
-+ `cloud-finance/notification-api`
-+ `cloud-finance/notification-worker`
-+ `cloud-finance/planning`
-+ `cloud-finance/recurring`
-+ `cloud-finance/ocr`
+![Amazon ECR Repositories](https://vvinh118.github.io/fcaj-workshop/images/5-Workshop/5.5-ECR/ecr.png)
 
-Sau khi tạo repository, mình thực hiện:
+### Quy trình Build và Push Image
 
-1. Đăng nhập Amazon ECR bằng AWS CLI.
-2. Build Docker Image từ source code.
-3. Gắn tag tương ứng với repository trên ECR.
-4. Push Docker Image lên Amazon ECR.
+Khi các ECR repositories đã sẵn sàng, tôi bắt tay vào việc đóng gói source code thành Docker Image theo một quy trình chuẩn:
 
-Sau khi hoàn tất, toàn bộ Docker Images đã sẵn sàng để được sử dụng trong Amazon ECS Fargate.
+1. **Xác thực kết nối:** Tôi sử dụng lệnh từ AWS CLI để đăng nhập an toàn vào registry của tài khoản AWS.
+2. **Đóng gói (Build):** Tiến hành build Docker Image cho từng microservice ngay trên môi trường local.
+3. **Định danh (Tag):** Gắn thẻ (tag) cho các image vừa tạo để chúng khớp chính xác với đường dẫn của repository tương ứng trên ECR.
+4. **Tải lên (Push):** Thực thi lệnh push để đẩy toàn bộ các images này lên Amazon ECR.
 
-![ecr](/images/5-Workshop/5.5-ECR/ecr.png)
+Kết thúc bước này, tất cả các mảnh ghép của hệ thống đã được container hóa thành công và nằm chờ sẵn sàng để tôi đem đi triển khai trên hạ tầng Amazon ECS Fargate.
