@@ -6,8 +6,6 @@ chapter: false
 pre: " <b> 1.6. </b> "
 ---
 
-# Worklog Tuần 6
-
 ### Mục tiêu tuần 6:
 
 - Chuẩn bị tài liệu Workshop.

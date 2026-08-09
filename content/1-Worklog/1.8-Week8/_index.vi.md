@@ -6,8 +6,6 @@ chapter: false
 pre: " <b> 1.8. </b> "
 ---
 
-# Worklog Tuần 8
-
 ### Mục tiêu tuần 8:
 
 - Hoàn thiện và nộp báo cáo thực tập.

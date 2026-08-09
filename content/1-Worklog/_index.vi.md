@@ -5,8 +5,6 @@ chapter: false
 pre: " <b> 1. </b> "
 ---
 
-# NHẬT KÝ CÔNG VIỆC
-
 Trong thời gian thực tập, công việc được triển khai trong **8 tuần**, tập trung từ việc làm quen với AWS, nghiên cứu và phát triển hệ thống Personal Finance Management System đến triển khai hạ tầng trên AWS, kiểm thử và hoàn thiện tài liệu.
 
 **Tuần 1:** Làm quen với môi trường thực tập, các công cụ Hugo, Markdown, VS Code và draw.io; nghiên cứu kiến thức nền tảng về AWS, thực hành AWS Free Tier, IAM, MFA, AWS Management Console, AWS Budgets và AWS Support. (1.1-week1/)

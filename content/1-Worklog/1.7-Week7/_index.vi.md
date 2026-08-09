@@ -6,8 +6,6 @@ chapter: false
 pre: " <b> 1.7. </b> "
 ---
 
-# Worklog Tuần 7
-
 ### Mục tiêu tuần 7:
 
 - Demo và hoàn thiện workshop web.
