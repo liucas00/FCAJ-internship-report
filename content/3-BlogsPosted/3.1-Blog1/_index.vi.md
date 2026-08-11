@@ -256,3 +256,5 @@ Chỉ với những thay đổi đơn giản như bật MFA, loại bỏ Access 
 - AWS Multi-factor authentication in IAM
 - Manage access keys for IAM users
 - What is AWS CloudTrail?
+
+{{<figure src="https://vvinh118.github.io/fcaj-workshop/3-blogsposted/3.1-blog1/blog1.png" title="Ảnh minh chứng bài đăng trên AWS Study Group VN">}}
