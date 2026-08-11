@@ -25,7 +25,7 @@ Giải pháp số hóa và tự động hóa quy trình đối soát giữa các
 ### 3. Kiến trúc giải pháp  
 Nền tảng áp dụng kiến trúc Client-Server phân tách rõ ràng giữa giao diện người dùng và logic xử lý dữ liệu, tận dụng tối đa Cloud Services để đảm bảo tính đồng bộ.  
 
-{{<figure scr="https://vvinh118.github.io/fcaj-workshop/2-proposal/architecture.png" title ="Sơ đồ kiến trúc dự án">}}
+{{<figure src="https://vvinh118.github.io/fcaj-workshop/2-proposal/architecture.png" title ="Sơ đồ kiến trúc dự án">}}
 
 *Dịch vụ & Công nghệ sử dụng*  
 - **Frontend (Mobile):** Flutter (Dart) – Xử lý UI đồng bộ ví, luồng quản lý giao dịch (wallet/transaction screens).  
