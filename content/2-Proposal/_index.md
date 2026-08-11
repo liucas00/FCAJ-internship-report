@@ -25,7 +25,7 @@ Digitizing and automating the reconciliation process across different funding so
 ### 3. Solution Architecture  
 The platform follows a Client-Server architecture that strictly separates the user interface from data processing logic, taking full advantage of Cloud Services to maintain real-time synchronization.  
 
-![Architecture Diagram](https://vvinh118.github.io/fcaj-workshop/2-proposal/architecture.png)
+{{<figure scr="https://vvinh118.github.io/fcaj-workshop/2-proposal/architecture.png" title ="Architecture Diagram">}}
 
 *Services & Technologies*  
 - **Frontend (Mobile):** Flutter (Dart) – Manages the wallet synchronization UI and transaction flows (wallet/transaction screens).  

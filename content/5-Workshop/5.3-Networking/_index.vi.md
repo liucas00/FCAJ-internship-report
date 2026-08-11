@@ -33,7 +33,7 @@ Mình tiến hành khởi tạo mạng riêng ảo với các thông số đư�
     *   **VPC endpoints**: Không chọn (None).
 5. Nhấn **Create VPC** và chờ AWS hoàn tất việc thiết lập hạ tầng.
 
-![Kết quả tạo VPC](https://vvinh118.github.io/fcaj-workshop/5-workshop/5.3-networking/vpc-created.png)
+{{<figure scr="https://vvinh118.github.io/fcaj-workshop/5-workshop/5.3-networking/vpc-created.png" title="Kết quả tạo VPC">}}
 
 ### Thiết lập Security Groups
 

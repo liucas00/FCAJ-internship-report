@@ -22,7 +22,7 @@ Thay vì tự cài đặt và vận hành database trên server EC2, chúng ta s
 - Đặt tên định danh cho DB instance (ví dụ: `cloud-finance-db`), sau đó thiết lập thông tin đăng nhập bao gồm Master username và password.
 - Tại mục **Connectivity**, hãy chắc chắn rằng tùy chọn **Public access** đang được đặt là `No`. Gắn Security Group tương ứng cho database để cho phép các dịch vụ backend từ ECS có thể kết nối vào một cách an toàn.
 
-![Khởi tạo RDS](https://vvinh118.github.io/fcaj-workshop/5-workshop/5.4-database-secret/rds-postgres.png)
+{{<figure scr="https://vvinh118.github.io/fcaj-workshop/5-workshop/5.4-database-secret/rds-postgres.png" title="Khởi tạo RDS">}}
 
 ### 2. Tăng tốc ứng dụng với Amazon ElastiCache for Redis
 
@@ -35,7 +35,7 @@ Thay vì tự cài đặt và vận hành database trên server EC2, chúng ta s
 - Trong phần cấu hình phần cứng (Node type), hãy chọn một loại instance nhỏ (như `cache.t2.micro` hoặc `cache.t3.micro`) để tiết kiệm chi phí cho môi trường lab. 
 - Tại phần **Security**, chọn Security Group phù hợp để cấp quyền cho backend trên ECS có thể đọc/ghi dữ liệu vào Redis. 
 
-![Khởi tạo ElastiCache Redis](https://vvinh118.github.io/fcaj-workshop/5-workshop/5.4-database-secret/elasticache-redis.png)
+{{<figure scr="https://vvinh118.github.io/fcaj-workshop/5-workshop/5.4-database-secret/elasticache-redis.png" title="Khởi tạo ElastiCache Redis">}}
 
 ### 3. Quản lý thông tin kết nối bằng AWS Secrets Manager
 
@@ -48,4 +48,4 @@ Việc gắn trực tiếp (hardcode) mật khẩu database vào mã nguồn là
 - Nhấn Next và đặt một cái tên gợi nhớ cho secret này (ví dụ: `cloud-finance/db-credentials`).
 - Hoàn tất các bước còn lại và lưu secret. Ở các bài sau, khi triển khai ứng dụng trên ECS, hệ thống sẽ tự động gọi vào Secrets Manager để kéo thông tin đăng nhập về mà không cần phải truyền mật khẩu dạng plain-text.
 
-![Cấu hình Secrets Manager](https://vvinh118.github.io/fcaj-workshop/5-workshop/5.4-database-secret/secrets-manager.png)
+{{<figure scr="https://vvinh118.github.io/fcaj-workshop/5-workshop/5.4-database-secret/secrets-manager.png" title="Cấu hình Secrets Manager">}}

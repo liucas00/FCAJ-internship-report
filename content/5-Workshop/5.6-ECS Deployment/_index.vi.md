@@ -21,7 +21,7 @@ Bài thực hành này hướng dẫn mình cách khởi tạo một cụm ECS C
 - Chú ý ở mục **Infrastructure**: Hãy đảm bảo mình đánh dấu chọn **AWS Fargate** để sử dụng kiến trúc serverless, giúp mình không cần bận tâm đến việc quản lý máy chủ vật lý.
 - Cuối cùng, nhấn **Create** để hệ thống bắt đầu quá trình tạo mới.
 
-![Tạo ECS Cluster](https://vvinh118.github.io/fcaj-workshop/5-workshop/5.6-ecs-deployment/ecs-cluster.png)
+{{<figure scr="https://vvinh118.github.io/fcaj-workshop/5-workshop/5.6-ecs-deployment/ecs-cluster.png" title="Tạo ECS Cluster">}}
 
 ### 2. Thiết lập Application Load Balancer (ALB)
 
@@ -36,7 +36,7 @@ Việc trang bị một Load Balancer là cần thiết để cân bằng tải 
   - **Security groups:** Gắn security group `alb-sg` để kiểm soát các luồng truy cập an toàn.
 - Kế tiếp, mình tiến hành tạo Target Groups (ví dụ đặt tên là `tg-gateway` lắng nghe trên cổng `8000`, đường dẫn health check là `/health`). Lưu lại thiết lập này để hoàn thành việc tạo ALB.
 
-![Tạo ALB](https://vvinh118.github.io/fcaj-workshop/5-workshop/5.6-ecs-deployment/alb.png)
+{{<figure scr="https://vvinh118.github.io/fcaj-workshop/5-workshop/5.6-ecs-deployment/alb.png" title="Tạo ALB">}}
 
 ### 3. Cấu hình Task Definitions và chạy ECS Services
 
@@ -50,4 +50,4 @@ Bước cuối cùng là khai báo hình thái của container và tiến hành 
   - Đặc biệt ở khối `secrets`, hãy tham chiếu cấu hình để hệ thống tự động kéo các giá trị bảo mật từ AWS Secrets Manager và tiêm vào biến môi trường của container ngay lúc khởi động.
 - Khi Task Definition đã sẵn sàng, mình quay lại màn hình quản lý cụm `cloud-finance-cluster`. Bấm vào **Create Service** để khởi chạy dịch vụ thực tế. Gắn dịch vụ này với ALB vừa tạo ở bước 2, đồng thời đừng quên kích hoạt tính năng **Service Connect** để tối ưu hóa khả năng giao tiếp nội bộ giữa các microservices.
 
-![Cấu hình ECS Services](https://vvinh118.github.io/fcaj-workshop/5-workshop/5.6-ecs-deployment/ecs-services.png)
+{{<figure scr="https://vvinh118.github.io/fcaj-workshop/5-workshop/5.6-ecs-deployment/ecs-services.png" title="Cấu hình ECS Services">}}

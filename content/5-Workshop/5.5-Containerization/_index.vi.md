@@ -21,7 +21,7 @@ Danh sách các kho lưu trữ mình đã khởi tạo bao gồm:
 * `cloud-finance/recurring`
 * `cloud-finance/ocr`
 
-![Amazon ECR Repositories](https://vvinh118.github.io/fcaj-workshop/5-workshop/5.5-containerization/ecr-repositories1.png)
+{{<figure scr="https://vvinh118.github.io/fcaj-workshop/5-workshop/5.5-containerization/ecr-repositories1.png" title="Amazon ECR Repositories">}}
 
 ### Quy trình Build và Push Image
 
@@ -33,3 +33,4 @@ Khi các ECR repositories đã sẵn sàng, mình bắt tay vào việc đóng g
 4. **Tải lên (Push):** Thực thi lệnh push để đẩy toàn bộ các images này lên Amazon ECR.
 
 Kết thúc bước này, tất cả các mảnh ghép của hệ thống đã được container hóa thành công và nằm chờ sẵn sàng để mình đem đi triển khai trên hạ tầng Amazon ECS Fargate.
+

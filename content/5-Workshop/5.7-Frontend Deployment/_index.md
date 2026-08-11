@@ -22,7 +22,8 @@ The first step is to create a secure storage space for our compiled frontend cod
 - Next, on your local machine, build your ReactJS source code by running the `npm run build` command.
 - Finally, upload the entire contents of the generated `dist` folder into your newly created S3 bucket.
 
-![S3 Buckets Interface](https://vvinh118.github.io/fcaj-workshop/5-workshop/5.7-frontend-deployment/s3-buckets.png)
+{{<figure scr="https://vvinh118.github.io/fcaj-workshop/5-workshop/5.7-frontend-deployment/s3-buckets.png" title="S3 Buckets Interface">}}
+
 
 ### 2. Configuring the Amazon CloudFront Distribution
 
@@ -36,4 +37,4 @@ Now that our code resides safely in S3, we need to configure CloudFront to serve
   - Create additional behaviors for any requests with prefixes like `/api/*` or `/ws/*` (e.g., backend API calls or WebSockets) to be forwarded directly to your **Application Load Balancer (ALB)**.
 - Lastly, integrate **AWS WAF** (Web Application Firewall) with your CloudFront distribution to filter out malicious traffic and protect your web application right at the edge.
 
-![CloudFront Configuration](https://vvinh118.github.io/fcaj-workshop/5-workshop/5.7-frontend-deployment/cloudfront.png)
+{{<figure scr="https://vvinh118.github.io/fcaj-workshop/5-workshop/5.7-frontend-deployment/cloudfront.png" title="CloudFront Configuration">}}

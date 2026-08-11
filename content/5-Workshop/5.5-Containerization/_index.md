@@ -21,7 +21,7 @@ The complete list of created repositories is as follows:
 * `cloud-finance/recurring`
 * `cloud-finance/ocr`
 
-![Amazon ECR Repositories](https://vvinh118.github.io/fcaj-workshop/5-workshop/5.5-containerization/ecr-repositories1.png)
+{{<figure scr="https://vvinh118.github.io/fcaj-workshop/5-workshop/5.5-containerization/ecr-repositories1.png" title="Amazon ECR Repositories">}}
 
 ### The Build and Push Workflow
 

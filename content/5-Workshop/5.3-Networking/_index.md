@@ -33,7 +33,8 @@ I set up the base network using the automated configuration tool in AWS. The ste
     *   **VPC endpoints**: None.
 5. Click **Create VPC** and wait for the infrastructure to be provisioned.
 
-![VPC Creation Process](https://vvinh118.github.io/fcaj-workshop/5-workshop/5.3-networking/vpc-created.png)
+{{<figure scr="https://vvinh118.github.io/fcaj-workshop/5-workshop/5.3-networking/vpc-created.png" title="VPC Creation Process">}}
+
 
 ### Configuring Security Groups
 

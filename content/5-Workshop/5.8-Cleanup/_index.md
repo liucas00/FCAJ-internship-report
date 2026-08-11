@@ -41,5 +41,3 @@ Once you have completed the workshop, deleting the resources you provisioned is 
 The final step sweeps away the underlying network foundation:
 - Head to the **VPC Dashboard** > **Your VPCs**.
 - Select `cloud-finance-vpc` and click **Actions** > **Delete VPC**. This action is highly convenient as it automatically detects and removes all associated dependencies, including Subnets, the Internet Gateway, Route Tables, and Security Groups.
-
-![Cleanup Resources](https://vvinh118.github.io/fcaj-workshop/5-workshop/5.8-cleanup/cleanup.png)

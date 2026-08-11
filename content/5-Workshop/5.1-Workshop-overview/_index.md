@@ -36,4 +36,4 @@ The system architecture for the **Cloud Finance Platform** is designed for high 
 * **CI/CD Pipeline:** The CI/CD flow uses **GitHub Actions** to automatically build and push container images to **Amazon ECR**, which triggers deployment updates on Amazon ECS.
 * **Observability & Security:** **AWS Secrets Manager** securely stores configuration data, **Amazon CloudWatch** handles central logging and metrics, and **Amazon SES** manages outgoing emails (e.g., OTPs and notifications).
 
-![System Architecture](https://vvinh118.github.io/fcaj-workshop/5-workshop/5.1-workshop-overview/architecture.png)
+{{<figure scr="https://vvinh118.github.io/fcaj-workshop/5-workshop/5.1-workshop-overview/architecture.png" title="System Architecture">}}

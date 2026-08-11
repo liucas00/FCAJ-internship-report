@@ -22,7 +22,7 @@ Bước đầu tiên là tạo một nơi để chứa các file code giao diệ
 - Tiếp theo, mở terminal trên máy tính của bạn, chạy lệnh `npm run build` để đóng gói project ReactJS.
 - Cuối cùng, upload toàn bộ các file và thư mục nằm trong thư mục `dist` (vừa được tạo ra) thẳng lên bucket S3 này.
 
-![Giao diện S3 Buckets](https://vvinh118.github.io/fcaj-workshop/5-workshop/5.7-frontend-deployment/s3-buckets.png)
+{{<figure scr="https://vvinh118.github.io/fcaj-workshop/5-workshop/5.7-frontend-deployment/s3-buckets.png" title="Giao diện S3 Buckets">}}
 
 ### 2. Thiết lập mạng phân phối nội dung với CloudFront
 
@@ -36,4 +36,4 @@ Sau khi code đã nằm gọn trên S3, giờ là lúc cấu hình CloudFront l�
   - Các request bắt đầu bằng `/api/*` hoặc `/ws/*` (dữ liệu backend, websocket) phải được chuyển hướng trực tiếp xuống cho **Application Load Balancer (ALB)** xử lý.
 - Để tăng cường an ninh, bạn nên tích hợp thêm **AWS WAF** ngay trên CloudFront distribution này. Nó sẽ đóng vai trò như lớp khiên chặn đứng các truy cập xấu trước khi chúng kịp chạm vào ứng dụng.
 
-![Giao diện cấu hình CloudFront](https://vvinh118.github.io/fcaj-workshop/5-workshop/5.7-frontend-deployment/cloudfront.png)
+{{<figure scr="https://vvinh118.github.io/fcaj-workshop/5-workshop/5.7-frontend-deployment/cloudfront.png" title="Giao diện cấu hình CloudFront">}}

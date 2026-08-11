@@ -36,7 +36,7 @@ Implementing a Load Balancer is essential for load distribution and safely routi
   - **Security groups:** Attach the `alb-sg` security group to safely control inbound and outbound traffic.
 - Next, create Target Groups (for example, name it `tg-gateway`, listening on port `8000`, with the health check path set to `/health`). Save these settings to complete the ALB creation process.
 
-![Create ALB](https://vvinh118.github.io/fcaj-workshop/5-workshop/5.6-ecs-deployment/alb.png)
+{{<figure scr="https://vvinh118.github.io/fcaj-workshop/5-workshop/5.6-ecs-deployment/alb.png" title="Create ALB">}}
 
 ### 3. Configuring Task Definitions and Running ECS Services
 
@@ -50,4 +50,4 @@ The final step is to define the blueprint for your containers and launch the act
   - In the `secrets` block, set up the references so the system automatically pulls secure values from AWS Secrets Manager and injects them into the container's environment variables upon startup.
 - Once your Task Definition is ready, return to the `cloud-finance-cluster` management screen. Click on **Create Service** to deploy the actual running service. Attach this service to the ALB you created in step 2, and remember to enable **Service Connect** to optimize internal communication among your microservices.
 
-![Configure ECS Services](https://vvinh118.github.io/fcaj-workshop/5-workshop/5.6-ecs-deployment/ecs-services.png)
+{{<figure scr="https://vvinh118.github.io/fcaj-workshop/5-workshop/5.6-ecs-deployment/ecs-services.png" title="Configure ECS Services">}}
