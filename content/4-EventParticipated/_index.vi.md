@@ -21,7 +21,7 @@ Mỗi sự kiện có nội dung và hình thức khác nhau. Event đầu tiên
 
 ---
 
-## 1. Cloud Architect
+## [1. Cloud Architect](4.1-Event1/_index.vi.md)
 
 Đây là cuộc thi về kiến thức AWS và thiết kế kiến trúc hệ thống. Em tham gia với tư cách thành viên của đội **“Gặp phải thằng liều”**.
 
@@ -31,7 +31,7 @@ Cuộc thi yêu cầu các đội vừa nắm chắc kiến thức về AWS vừ
 
 ---
 
-## 2. Cloud Architect x Meet Up
+## [2. Cloud Architect x Meet Up](4.2-Event2/_index.vi.md)
 
 Sự kiện thứ hai diễn ra sau vòng thi đầu tiên và bao gồm hai phần chính.
 
@@ -48,7 +48,7 @@ Các phiên chia sẻ giúp em có thêm góc nhìn thực tế về việc vậ
 
 ---
 
-## 3. AWS FCAJ Agent Forge - Deep Dive Day 2
+## [3. AWS FCAJ Agent Forge - Deep Dive Day 2](4.3-Event3/_index.vi.md)
 
 Sự kiện thứ ba tập trung vào **Agentic AI** và cách xây dựng các hệ thống AI Agent có khả năng đưa vào môi trường production.
 
