@@ -145,3 +145,5 @@ Hình dưới đây minh họa kiến trúc triển khai ứng dụng trên AWS 
 - Amazon CloudWatch Metrics for Amazon ECS
 - Application Auto Scaling User Guide
 - Amazon ECS Best Practices Guide
+
+{{<figure src="https://vvinh118.github.io/fcaj-workshop/3-blogsposted/3.3-blog3/blog3.png" title="Ảnh minh chứng bài đăng trên AWS Study Group VN">}}

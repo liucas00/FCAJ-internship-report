@@ -14,3 +14,5 @@ Auto Scaling không chỉ dành cho những hệ thống có hàng triệu ngư�
 
 ###  [Blog 3 - Quản lý thông tin nhạy cảm trên AWS: Khi file .env không còn là lựa chọn tối ưu](3.3-Blog3/)
 Tìm hiểu vì sao file .env không còn là lựa chọn phù hợp trên môi trường Production và cách AWS Secrets Manager cùng Systems Manager Parameter Store giúp quản lý thông tin nhạy cảm an toàn, linh hoạt hơn.
+
+{{<figure src="https://vvinh118.github.io/fcaj-workshop/3-blogsposted/3.2-blog2/blog2.png" title="Ảnh minh chứng bài đăng trên AWS Study Group VN">}}
