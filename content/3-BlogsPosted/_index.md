@@ -15,4 +15,3 @@ Auto Scaling is not exclusively for systems with millions of users. This article
 ###  [Blog 3 - Managing Sensitive Information on AWS: When the .env file is no longer the optimal choice](3.3-Blog3/)
 Discover why the .env file is no longer suitable for Production environments. Learn how AWS Secrets Manager and Systems Manager Parameter Store provide a more secure and flexible way to manage sensitive information.
 
-{{<figure src="https://vvinh118.github.io/fcaj-workshop/3-blogsposted/3.2-blog3/blog2.png" title="Proof on AWS Study Group VN">}}

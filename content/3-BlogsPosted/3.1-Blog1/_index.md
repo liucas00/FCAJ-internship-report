@@ -249,4 +249,4 @@ With just simple changes like enabling MFA, removing unused Access Keys, narrowi
 - Manage access keys for IAM users
 - What is AWS CloudTrail?
 
-{{<figure src="https://vvinh118.github.io/fcaj-workshop/3-blogsposted/3.1-blog3/blog1.png" title="Proof on AWS Study Group VN">}}
+{{<figure src="https://vvinh118.github.io/fcaj-workshop/3-blogsposted/3.1-blog1/blog1.png" title="Proof on AWS Study Group VN">}}

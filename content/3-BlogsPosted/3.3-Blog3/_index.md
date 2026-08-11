@@ -43,3 +43,5 @@ Instead of hardcoding secrets, AWS services (EC2, ECS, Lambda) use IAM Roles to 
 
 ## Conclusion
 Relying on `.env` files in AWS Production environments is no longer optimal. Adopting AWS Secrets Manager or Parameter Store decouples sensitive data from your source code, minimizes leak risks, and simplifies operations while fully aligning with AWS security best practices.
+
+{{<figure src="https://vvinh118.github.io/fcaj-workshop/3-blogsposted/3.2-blog3/blog2.png" title="Proof on AWS Study Group VN">}}

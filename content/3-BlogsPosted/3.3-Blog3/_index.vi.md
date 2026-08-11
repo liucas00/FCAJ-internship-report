@@ -215,3 +215,5 @@ Chỉ với một vài thay đổi trong cách quản lý Secret, hệ thống s
 - AWS Systems Manager Parameter Store Documentation
 - AWS Security Best Practices
 - AWS IAM Best Practices
+
+{{<figure src="https://vvinh118.github.io/fcaj-workshop/3-blogsposted/3.2-blog2/blog2.png" title="Ảnh minh chứng bài đăng trên AWS Study Group VN">}}
